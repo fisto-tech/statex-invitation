@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Statex® | Official VIP Invitation — India ITME 2026 (Hall 9 / H9G7)</title>
+
+  <link rel="icon" type="image/png" href="statex-logo.png">
+  <link rel="apple-touch-icon" href="statex-logo.png">
+
+  <!-- Google Font: Lexend -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Three.js r128 & GLTFLoader for 360° Interactive 3D Model -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" crossorigin="anonymous"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Lexend', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#e30613',
+              crimson: '#7b0817',
+              darkBurgundy: '#2d0208',
+              gold: '#c8963e',
+              goldLight: '#fbe8b5',
+              navy: '#172554',
+              teal: '#00bcba',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --font-main: 'Lexend', sans-serif;
+      --color-gold: #c8963e;
+      --color-gold-bright: #ffd700;
+      --color-burgundy-dark: #220206;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: #1e0205;
+      color: #172554;
+      overflow-x: hidden;
+      /* Deep luxury theatre atmosphere with soft ambient spotlight */
+      background: radial-gradient(circle at 50% 25%, #47060f 0%, #200206 55%, #0d0002 100%);
+      background-attachment: fixed;
+    }
+
+    /* Outer Stage Wrapper - strictly flush with top */
+    .invitation-perspective-stage {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      perspective: 2400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    @media (min-width: 640px) {
+      .invitation-perspective-stage {
+        max-width: 500px;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .invitation-perspective-stage {
+        max-width: 540px;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .invitation-perspective-stage {
+        max-width: 560px;
+      }
+    }
+
+    /* Fixed Aspect Luxury Invitation Frame - strictly zero top gap across all screens */
+    .envelope-master-frame {
+      position: relative;
+      top: 0;
+      margin-top: 0;
+      width: 100%;
+      height: 100dvh;
+      min-height: 560px;
+      border-radius: 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      background: #110103;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: height 0.8s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.8s ease;
+    }
+
+    @media (min-width: 640px) {
+      .envelope-master-frame {
+        height: 100dvh;
+        min-height: 700px;
+        border-radius: 0;
+        box-shadow: 0 35px 85px -15px rgba(0, 0, 0, 0.85), 0 0 0 1.5px rgba(200, 150, 62, 0.4);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .envelope-master-frame {
+        height: 100dvh;
+        min-height: 760px;
+        border-radius: 0;
+      }
+    }
+
+    /* When open, the master frame expands smoothly so the inside card is naturally scrollable */
+    .envelope-master-frame.is-open {
+      height: auto !important;
+      min-height: 100dvh;
+      overflow: visible;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    @media (min-width: 640px) {
+      .envelope-master-frame.is-open {
+        min-height: 800px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .envelope-master-frame.is-open {
+        min-height: 820px;
+      }
+    }
+
+    /* =========================================================================
+       CENTER-SPLIT DOORS (FEATURING LUXURY ENVELOPE ARTWORK)
+       ========================================================================= */
+    .center-split-door {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50.15%;
+      height: 100%;
+      z-index: 30;
+      overflow: hidden;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.45);
+      transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s, opacity 0.7s ease 1.1s;
+    }
+
+    /* LEFT DOOR */
+    .center-split-left {
+      left: 0;
+      transform-origin: left center;
+      border-radius: 0;
+      border-right: none;
+    }
+
+    .center-split-left .door-bg-pane {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      background-image: url('luxury_envelope_bg.jpg');
+      background-size: 100% 100%;
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+
+    /* RIGHT DOOR */
+    .center-split-right {
+      right: 0;
+      transform-origin: right center;
+      border-radius: 0;
+      border-left: none;
+    }
+
+    .center-split-right .door-bg-pane {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200%;
+      height: 100%;
+      background-image: url('luxury_envelope_bg.jpg');
+      background-size: 100% 100%;
+      background-position: right center;
+      background-repeat: no-repeat;
+    }
+
+    /* OPEN CENTER SPLIT EFFECT */
+    .envelope-master-frame.is-open .center-split-left {
+      transform: rotateY(-130deg) translateX(-15px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .envelope-master-frame.is-open .center-split-right {
+      transform: rotateY(130deg) translateX(15px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Seam Shimmer Glow removed by default so center line does not show */
+    .center-split-door::after {
+      display: none;
+    }
+
+    /* =========================================================================
+       WAX SEAL BEACON & LIVE AURA (SITTING RIGHT AT 83.5% OF ARTWORK SEAL)
+       ========================================================================= */
+    .wax-seal-center-container {
+      position: absolute;
+      left: 50%;
+      top: 85.8%;
+      transform: translate(-50%, -50%);
+      z-index: 45;
+      pointer-events: auto;
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .envelope-master-frame.is-open .wax-seal-center-container {
+      transform: translate(-50%, -50%) scale(0.6);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .wax-seal-btn {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      /* Fully opaque rich royal wax medallion completely covering background artwork */
+      background: radial-gradient(circle at 35% 30%, #ff2a3b 0%, #d80010 40%, #8e000c 80%, #520006 100%);
+      border: 3.5px solid #ffdc73;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6),
+        0 0 35px rgba(255, 215, 0, 0.75),
+        inset 0 4px 8px rgba(255, 255, 255, 0.45),
+        inset 0 -6px 12px rgba(0, 0, 0, 0.65);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      animation: sealPulse 2.2s ease-in-out infinite, sealShine 4.5s ease-in-out infinite;
+    }
+
+    .wax-seal-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 
+        0 14px 40px rgba(0, 0, 0, 0.75),
+        0 0 45px rgba(255, 225, 90, 0.95),
+        inset 0 4px 10px rgba(255, 255, 255, 0.6),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.7);
+    }
+
+    .wax-seal-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Inner embossed gold ring */
+    .seal-emboss-ring {
+      position: absolute;
+      inset: 6px;
+      border-radius: 9999px;
+      border: 1.5px dashed rgba(255, 220, 115, 0.75);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .seal-pulse-ring {
+      position: absolute;
+      inset: -10px;
+      border-radius: 9999px;
+      border: 2px solid rgba(255, 215, 0, 0.7);
+      animation: ringExpand 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      pointer-events: none;
+    }
+
+    .seal-pulse-ring-2 {
+      position: absolute;
+      inset: -20px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(255, 180, 0, 0.45);
+      animation: ringExpand 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) 0.75s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes ringExpand {
+      0% { transform: scale(0.7); opacity: 0.95; }
+      80% { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(1.55); opacity: 0; }
+    }
+
+    @keyframes sealPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+          0 10px 30px rgba(0, 0, 0, 0.6),
+          0 0 25px rgba(255, 200, 50, 0.6),
+          inset 0 4px 8px rgba(255, 255, 255, 0.45),
+          inset 0 -6px 12px rgba(0, 0, 0, 0.65);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 
+          0 12px 35px rgba(0, 0, 0, 0.7),
+          0 0 42px rgba(255, 220, 80, 0.9),
+          inset 0 5px 10px rgba(255, 255, 255, 0.6),
+          inset 0 -6px 14px rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    @keyframes sealShine {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.15) contrast(1.05); }
+    }
+
+    .seal-light-beam {
+      position: absolute;
+      bottom: 85%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 75px;
+      background: linear-gradient(180deg, transparent, rgba(255, 220, 100, 0.8) 50%, rgba(255, 240, 180, 0.95) 100%);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      pointer-events: none;
+      animation: beamBreathe 2.4s ease-in-out infinite;
+    }
+
+    @keyframes beamBreathe {
+      0%, 100% { height: 60px; opacity: 0.6; }
+      50% { height: 90px; opacity: 1; box-shadow: 0 0 25px rgba(255, 230, 120, 0.95); }
+    }
+
+    /* Cover Headline Plaque on closed doors */
+    .cover-teaser-plaque {
+      position: absolute;
+      top: 13.5%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 35;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .envelope-master-frame.is-open .cover-teaser-plaque {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+
+    .shimmer-card-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shimmer-card-effect::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: rotate(25deg);
+      animation: ribbonShimmer 4.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes ribbonShimmer {
+      0% { left: -60%; }
+      30%, 100% { left: 160%; }
+    }
+
+    /* =========================================================================
+       INSIDE INVITATION CARD (USING NEW USER BACKGROUND IMAGE EXACTLY)
+       ========================================================================= */
+    .inside-revealed-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-image: url('inside_luxury_bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      border-radius: 0;
+      border: 1px solid rgba(200, 150, 62, 0.6);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      z-index: 10;
+    }
+
+    .envelope-master-frame.is-open .inside-revealed-card {
+      height: auto;
+      min-height: 100dvh;
+      overflow: visible;
+      box-shadow: 0 25px 70px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(200, 150, 62, 0.6);
+    }
+
+    @media (min-width: 640px) {
+      .envelope-master-frame.is-open .inside-revealed-card {
+        min-height: 800px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .envelope-master-frame.is-open .inside-revealed-card {
+        min-height: 820px;
+      }
+    }
+
+    /* Golden Hairline Frame inside Card */
+    .gold-foil-inner-border {
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(200, 150, 62, 0.4);
+      border-radius: 0;
+      pointer-events: none;
+    }
+
+    /* Staggered Reveal Elements inside the card */
+    .reveal-step {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-step.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #canvas3dContainer canvas {
+      touch-action: none;
+    }
+
+    .burst-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 60;
+      border-radius: 2px;
+      will-change: transform, opacity;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c8963e;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start m-0 p-0 select-none antialiased overflow-x-hidden">
+
+  <!-- MAIN INVITATION FRAME WITH CENTER-SPLIT DOORS -->
+  <main id="tiltMainStage" class="invitation-perspective-stage">
+    <div id="invitationEnvelope" class="envelope-master-frame">
+
+      <!-- ========================================================= -->
+      <!-- CENTER-SPLIT DOORS (CLOSED ENVELOPE FRONT)                -->
+      <!-- ========================================================= -->
+      <div id="centerSplitLeft" class="center-split-door center-split-left select-none">
+        <div class="door-bg-pane"></div>
+      </div>
+
+      <div id="centerSplitRight" class="center-split-door center-split-right select-none">
+        <div class="door-bg-pane"></div>
+      </div>
+
+      <!-- TEASER OVERLAY ON CLOSED DOORS (PIXEL PERFECT REPLICA OF USER REFERENCE IMAGE) -->
+      <div class="cover-teaser-plaque select-none px-4">
+        <!-- 1. STATEX RED CAPSULE BADGE -->
+        <div class="inline-flex items-center justify-center px-7 py-2.5 rounded-2xl bg-[#e30613] text-white shadow-md">
+          <span class="font-extrabold italic text-2xl sm:text-3xl tracking-tight leading-none">Statex®</span>
+        </div>
+
+        <!-- 2. OFFICIAL EXHIBITION PASS WITH FLANKING GOLDEN HAIRLINES -->
+        <div class="mt-4 flex items-center justify-center w-full max-w-[270px] sm:max-w-xs gap-3">
+          <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
+          <span class="text-[9px] sm:text-[10px] font-black tracking-[0.22em] text-[#172554] uppercase whitespace-nowrap">
+            Official Exhibition Pass
+          </span>
+          <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
+        </div>
+
+        <!-- 3. EXACT FLAME LOGO + "India ITME 2026 Exhibition" -->
+        <div class="mt-4 flex items-center justify-center gap-3.5 w-full max-w-[280px] sm:max-w-sm">
+          <!-- Authentic Flame Emblem -->
+          <img src="itme_flame_logo.png" alt="India ITME Flame" class="w-11 sm:w-12 h-auto object-contain drop-shadow-sm shrink-0">
+
+          <!-- Left Golden Accent Bar beside Title -->
+          <div class="w-[2px] h-[72px] sm:h-20 bg-[#c8963e]/80 shrink-0"></div>
+
+          <!-- Exhibition Title Stack -->
+          <div class="text-left flex flex-col justify-center">
+            <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-[1.05]">
+              India ITME
+            </div>
+            <div class="text-2xl sm:text-3xl font-black text-[#e30613] tracking-tight leading-[1.05] mt-0.5">
+              2026
+            </div>
+            <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-[1.05] mt-0.5">
+              Exhibition
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. TWO-COLUMN DATE & VENUE / STALL INFO -->
+        <div class="mt-5 w-full max-w-[270px] sm:max-w-[290px] flex items-center justify-center gap-4 text-left">
+          <!-- Left Column: 4-9 Dec 2026 -->
+          <div class="flex flex-col items-center justify-center min-w-[65px] shrink-0">
+            <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-none">
+              4–9
+            </div>
+            <div class="text-[11px] sm:text-xs font-black text-[#e30613] uppercase tracking-wide mt-1">
+              Dec 2026
+            </div>
+          </div>
+
+          <!-- Vertical Divider Bar -->
+          <div class="w-[2px] h-11 bg-[#c8963e]/80 shrink-0"></div>
+
+          <!-- Right Column: Greater Noida / India Expo Mart & Stall Badge -->
+          <div class="flex flex-col items-start justify-center">
+            <div class="text-xs sm:text-[13px] font-extrabold text-[#172554] leading-tight">
+              Greater Noida
+            </div>
+            <div class="text-[10px] sm:text-[11px] font-bold text-slate-600 leading-tight mt-0.5">
+              India Expo Mart
+            </div>
+            <div class="mt-1 inline-flex items-center px-2.5 py-0.5 rounded-md bg-[#172554] text-amber-300 text-[10px] sm:text-[11px] font-black tracking-wider uppercase shadow-sm">
+              Hall 9 / H9G7
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER WAX SEAL (CLICK TO SPLIT OPEN) -->
+      <div class="wax-seal-center-container">
+        <div class="seal-light-beam"></div>
+        <button id="openSealBtn" type="button" aria-label="Open Invitation" class="wax-seal-btn group focus:outline-none">
+          <span class="seal-pulse-ring"></span>
+          <span class="seal-pulse-ring-2"></span>
+          <span class="seal-emboss-ring"></span>
+          <!-- Premium Gold Statex Monogram & Starburst Emblem -->
+          <svg class="w-10 h-10 text-amber-100 drop-shadow-lg group-hover:scale-110 transition-transform" viewBox="0 0 40 40" fill="none">
+            <!-- Center Starburst Crest -->
+            <path d="M20 4 L22.5 14 L32.5 12 L25 18.5 L30 27 L20.5 23 L14 31 L14.5 21 L5 18 L15 13.5 Z" fill="#fff2a8" opacity="0.3"></path>
+            <!-- Crossed Gold Stylized Needles -->
+            <line x1="11" y1="11" x2="29" y2="29" stroke="#fff8cf" stroke-width="2.5" stroke-linecap="round"></line>
+            <line x1="29" y1="11" x2="11" y2="29" stroke="#fff8cf" stroke-width="2.5" stroke-linecap="round"></line>
+            <circle cx="20" cy="20" r="4.5" fill="#ffe270" stroke="#7e0009" stroke-width="1.5"></circle>
+            <!-- Outer Gold Bead Accents -->
+            <circle cx="20" cy="8" r="1.5" fill="#fff5b8"></circle>
+            <circle cx="32" cy="20" r="1.5" fill="#fff5b8"></circle>
+            <circle cx="20" cy="32" r="1.5" fill="#fff5b8"></circle>
+            <circle cx="8" cy="20" r="1.5" fill="#fff5b8"></circle>
+          </svg>
+        </button>
+        <div class="text-center mt-2.5 pointer-events-none">
+          <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#1b0306]/90 via-[#3a060d]/90 to-[#1b0306]/90 border border-[#f5c358]/80 text-[#ffe599] text-[10px] sm:text-[11px] font-black tracking-[0.2em] uppercase shadow-[0_4px_15px_rgba(0,0,0,0.7),0_0_12px_rgba(245,195,88,0.35)] backdrop-blur-md">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ffda6b] shadow-[0_0_8px_#ffda6b] animate-ping"></span>
+            <span class="drop-shadow-sm">Tap Seal to Open</span>
+            <svg class="w-3 h-3 text-[#ffda6b] animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- INSIDE CARD: EXACT MATCH TO USER'S SCREENSHOT 2           -->
+      <!-- ========================================================= -->
+      <div id="insideCard" class="inside-revealed-card p-4 sm:p-7 md:p-8 flex flex-col items-center text-center relative">
+        
+        <!-- Double Gold Hairline Border -->
+        <div class="gold-foil-inner-border"></div>
+
+        <!-- INSIDE TOP BAR: VIP Pass & Back Button -->
+        <div class="w-full flex items-center justify-between mb-2 z-20 px-1">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#172554]/80 border border-amber-400/40 text-amber-200 text-[10px] font-bold tracking-wider uppercase backdrop-blur-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#e30613] animate-pulse"></span>
+            <span>VIP Pass</span>
+          </div>
+
+          <button id="closeCardBtn" type="button" aria-label="Back to Envelope" title="Close invitation and fold envelope" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-black/60 hover:bg-[#e30613] text-amber-200 hover:text-white text-[11px] font-bold border border-amber-300/40 shadow-sm transition active:scale-95 cursor-pointer backdrop-blur-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            <span>Back</span>
+          </button>
+        </div>
+
+        <!-- 1. STATEX RED PILL BADGE -->
+        <div class="mt-1 mb-2 flex flex-col items-center">
+          <div class="inline-flex items-center justify-center px-7 py-2.5 rounded-2xl bg-[#e30613] text-white shadow-md">
+            <span class="font-extrabold italic text-2xl tracking-tight leading-none">Statex®</span>
+          </div>
+        </div>
+
+        <!-- 2. "YOU ARE CORDIALLY INVITED" PILL BADGE -->
+        <div data-step="1" class="reveal-step mt-2 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#112244] border border-amber-400 text-amber-300 text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase shadow-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          <span>You Are Cordially Invited</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        </div>
+
+        <!-- 3. MAIN HEADING: INDIA ITME 2026 EXHIBITION - GREATER NOIDA -->
+        <div data-step="2" class="reveal-step mt-3 max-w-sm">
+          <h1 class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-tight">
+            India ITME 2026<br>
+            Exhibition - Greater Noida
+          </h1>
+        </div>
+
+        <!-- 4. EXHIBITION PAVILION & STALL CARD (HALL 9 / H9G7) WITH TAP TO COPY -->
+        <div data-step="3" class="reveal-step mt-4 w-full max-w-xs sm:max-w-sm">
+          <div id="boothCopyCard" role="button" tabindex="0" title="Click to copy stall details" class="group rounded-2xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] p-3 text-white shadow-lg border border-amber-300/40 transition-all cursor-pointer text-left">
+            <div class="flex items-center justify-between gap-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-[#f59e0b] flex items-center justify-center text-[#172554] shrink-0 shadow">
+                  <!-- Location Pin SVG -->
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[9px] uppercase font-bold tracking-wider text-amber-300">Exhibition Pavilion &amp; Stall</div>
+                  <div class="text-lg sm:text-xl font-black text-white tracking-wide">Hall 9 / H9G7</div>
+                </div>
+              </div>
+              <div class="h-8 w-px bg-white/20"></div>
+              <button type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#e30613] text-white text-xs font-bold shadow transition-transform group-hover:scale-105 shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span id="boothBadgeText">Tap to Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. DATE PILL BADGE ("December 4th to 9th, 2026") -->
+        <div data-step="4" class="reveal-step mt-3 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border-2 border-amber-400 text-xs sm:text-sm font-black text-[#172554] shadow-md">
+          <span class="w-5 h-5 rounded-md bg-[#e30613] text-white flex items-center justify-center shrink-0">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </span>
+          <span>December 4th to 9th, 2026</span>
+        </div>
+
+        <!-- 6. PRODUCT DISPLAY CARD: STATEX VEGAM TESTING SYSTEM (EXACT MATCH TO SCREENSHOT 2) -->
+        <div data-step="5" class="reveal-step mt-4 w-full max-w-xs sm:max-w-sm">
+          <div class="rounded-2xl bg-white p-3.5 border-2 border-amber-300/80 shadow-md text-left">
+            
+            <!-- Top Card Header: Pills -->
+            <div class="flex items-center justify-between gap-2 pb-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#112244] text-amber-300 text-[10px] font-black uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                </svg>
+                <span>Statex Vegam System</span>
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-purple-100 text-purple-900 border border-purple-200 text-[9px] font-black uppercase tracking-wider">
+                HIGH-VOLUME FIBER TESTER
+              </span>
+            </div>
+
+            <!-- Product Title -->
+            <div class="text-center mt-2 mb-1">
+              <h3 class="text-sm sm:text-base font-black text-[#172554]">
+                Statex Vegam Testing System
+              </h3>
+            </div>
+
+            <!-- Authentic Cropped Product Photo -->
+            <div class="relative my-2 py-2 flex items-center justify-center bg-gradient-to-b from-white to-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+              <img src="statex_vegam_product.png" alt="Statex Vegam Testing System" class="w-full max-h-[160px] object-contain mx-auto" onerror="this.src='https://placehold.co/600x320/ffffff/172554?text=Statex+Vegam+Testing+System';">
+            </div>
+
+            <!-- Caption & Live Demo Pill -->
+            <div class="pt-1 flex flex-col gap-1.5">
+              <div class="text-xs font-black text-[#172554]">
+                Statex Length, Strength &amp; Color Module
+              </div>
+              <div>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-50 border border-amber-300 text-[#e30613] text-[10px] font-black">
+                  <span class="w-3.5 h-3.5 rounded-full bg-[#e30613] text-white flex items-center justify-center text-[8px]">▶</span>
+                  <span>Live Demo at Hall 9 / H9G7</span>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 7. BOTTOM DUAL-PILL 360° 3D MODEL BUTTON (EXACT MATCH TO SCREENSHOT 2) -->
+        <div data-step="6" class="reveal-step mt-4 w-full max-w-xs flex flex-col items-center mb-6">
+          <button id="open360Btn" type="button" class="w-full inline-flex items-center justify-between p-1.5 rounded-2xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] hover:opacity-95 text-white shadow-xl border-2 border-amber-400 transition-all active:scale-95 cursor-pointer">
+            <div class="flex items-center gap-2 pl-3">
+              <!-- Cube Icon -->
+              <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+              </svg>
+              <span class="text-lg font-black tracking-wide text-white">360°</span>
+            </div>
+            <div class="h-7 w-px bg-white/20"></div>
+            <div class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#e30613] text-white text-xs font-black shadow">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+              </svg>
+              <span>3D MODEL</span>
+            </div>
+          </button>
+          
+          <div class="mt-2 text-center">
+            <p class="text-[10px] text-slate-700 font-bold">
+              Click 360° to inspect the Statex Vegam console in interactive 3D
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- MODAL: FULLSCREEN INTERACTIVE 360° 3D VIEWER               -->
+  <!-- ========================================================= -->
+  <div id="modal360" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4 md:p-6 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal360Title">
+    <div class="relative w-full max-w-4xl h-[90vh] sm:h-[84vh] rounded-2xl bg-white border border-amber-300/40 shadow-2xl flex flex-col overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3 bg-[#172554] text-white border-b border-amber-400/30 z-10 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center text-[#172554]">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 id="modal360Title" class="text-xs sm:text-sm font-extrabold text-white leading-tight">
+              Statex Vegam Console — 360° Interactive Model
+            </h3>
+            <p class="text-[10px] sm:text-xs text-amber-300">
+              India ITME 2026 • Stall H9G7 • Drag to rotate, pinch to zoom
+            </p>
+          </div>
+        </div>
+
+        <button id="close360Btn" type="button" aria-label="Close 3D Viewer" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#e30613] text-white flex items-center justify-center transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 3D Canvas Container -->
+      <div id="canvas3dContainer" class="relative flex-1 w-full h-full bg-slate-100 cursor-grab active:cursor-grabbing overflow-hidden select-none">
+        <div id="hotspotInfo" class="absolute bottom-3 left-3 right-3 sm:right-auto sm:max-w-xs z-10 rounded-xl bg-white/95 border border-slate-200 p-3 shadow-md backdrop-blur-sm">
+          <div class="text-[9px] font-bold uppercase tracking-wider text-[#e30613]" id="hotspotTag">Full Console</div>
+          <div class="text-xs sm:text-sm font-extrabold text-[#172554] mt-0.5" id="hotspotHeading">Statex Vegam Automated Testing Line</div>
+          <p class="text-[11px] text-slate-600 mt-1 leading-relaxed" id="hotspotDesc">
+            High-Volume Cotton Fiber Testing Console with Length, Strength & Color modules.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Controls Toolbar -->
+      <div class="px-3 sm:px-6 py-2.5 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 z-10 shrink-0">
+        <div class="flex items-center gap-1.5 overflow-x-auto py-1">
+          <button type="button" data-preset="overview" class="preset-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-[#172554] text-white transition cursor-pointer">
+            Overview
+          </button>
+          <button type="button" data-preset="hood" class="preset-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer">
+            Testing Hood
+          </button>
+          <button type="button" data-preset="operator" class="preset-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer">
+            Operator Console
+          </button>
+        </div>
+
+        <div class="flex items-center gap-1.5 ml-auto">
+          <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white text-[#172554] border border-slate-300 transition cursor-pointer">
+            <span id="autoRotateDot" class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>Auto-Rotate: ON</span>
+          </button>
+          <button id="resetViewBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer">
+            Reset
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    (function () {
+      const envelope = document.getElementById('invitationEnvelope');
+      const insideCard = document.getElementById('insideCard');
+      const openSealBtn = document.getElementById('openSealBtn');
+      const centerSplitLeft = document.getElementById('centerSplitLeft');
+      const centerSplitRight = document.getElementById('centerSplitRight');
+      const closeCardBtn = document.getElementById('closeCardBtn');
+      // topControls removed (back button moved inside envelope)
+      const boothCopyCard = document.getElementById('boothCopyCard');
+      const boothBadgeText = document.getElementById('boothBadgeText');
+      const revealSteps = Array.from(document.querySelectorAll('.reveal-step'));
+
+      const open360Btn = document.getElementById('open360Btn');
+      const modal360 = document.getElementById('modal360');
+      const close360Btn = document.getElementById('close360Btn');
+      const canvasContainer = document.getElementById('canvas3dContainer');
+      const toggleAutoRotateBtn = document.getElementById('toggleAutoRotateBtn');
+      const autoRotateDot = document.getElementById('autoRotateDot');
+      const resetViewBtn = document.getElementById('resetViewBtn');
+      const presetBtns = Array.from(document.querySelectorAll('.preset-btn'));
+
+      const hotspotTag = document.getElementById('hotspotTag');
+      const hotspotHeading = document.getElementById('hotspotHeading');
+      const hotspotDesc = document.getElementById('hotspotDesc');
+
+      let isCardOpen = false;
+      let revealTimers = [];
+
+      // Confetti burst on opening
+      function spawnCelebrationBurst() {
+        const rect = openSealBtn.getBoundingClientRect();
+        const originX = rect.left + rect.width / 2;
+        const originY = rect.top + rect.height / 2;
+        const colors = ['#e30613', '#ffd700', '#ff6b35', '#ffffff', '#7b0817'];
+
+        for (let i = 0; i < 32; i++) {
+          const p = document.createElement('span');
+          p.className = 'burst-particle';
+          const size = 5 + Math.random() * 6;
+          p.style.width = size + 'px';
+          p.style.height = (Math.random() > 0.5 ? size : size * 0.6) + 'px';
+          p.style.left = originX + 'px';
+          p.style.top = originY + 'px';
+          p.style.backgroundColor = colors[i % colors.length];
+          document.body.appendChild(p);
+
+          const angle = (Math.PI * 2 * i) / 32 + (Math.random() - 0.5) * 0.3;
+          const velocity = 85 + Math.random() * 180;
+          const dx = Math.cos(angle) * velocity;
+          const dy = Math.sin(angle) * velocity - 40;
+          const rot = (Math.random() - 0.5) * 500;
+
+          p.animate(
+            [
+              { transform: 'translate(-50%, -50%) scale(0.4)', opacity: 1 },
+              { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(1.1) rotate(${rot}deg)`, opacity: 0.95, offset: 0.65 },
+              { transform: `translate(calc(-50% + ${dx * 1.15}px), calc(-50% + ${dy + 90}px)) scale(0.4) rotate(${rot * 1.3}deg)`, opacity: 0 }
+            ],
+            { duration: 1100 + Math.random() * 400, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+          ).onfinish = () => p.remove();
+        }
+      }
+
+      // Copy Booth Location
+      function copyBoothLocation() {
+        const text = 'Statex — Hall 9 / H9G7, India ITME 2026 (Dec 4–9, Greater Noida)';
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+          document.execCommand('copy');
+          boothBadgeText.textContent = 'Copied ✓';
+          setTimeout(() => {
+            boothBadgeText.textContent = 'Tap to Copy';
+          }, 2000);
+        } catch (err) {
+          boothBadgeText.textContent = 'India Expo Mart';
+        }
+        document.body.removeChild(tempInput);
+      }
+
+      // Open Invitation Card (Center Split Doors open from middle)
+      function openInvitationCard() {
+        if (isCardOpen) return;
+        isCardOpen = true;
+
+        spawnCelebrationBurst();
+        envelope.classList.add('is-open');
+
+        // topControls opened
+        
+
+        revealTimers.forEach(t => clearTimeout(t));
+        revealTimers = [];
+
+        revealSteps.forEach((stepEl, idx) => {
+          const delay = 500 + idx * 180;
+          const timer = setTimeout(() => {
+            stepEl.classList.add('is-visible');
+          }, delay);
+          revealTimers.push(timer);
+        });
+
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 300);
+      }
+
+      // Close Invitation Card (Center Split Doors close back)
+      function closeInvitationCard() {
+        if (!isCardOpen) return;
+        isCardOpen = false;
+
+        revealTimers.forEach(t => clearTimeout(t));
+        revealTimers = [];
+
+        revealSteps.forEach(stepEl => stepEl.classList.remove('is-visible'));
+        envelope.classList.remove('is-open');
+
+        // topControls closed
+        
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      openSealBtn.addEventListener('click', openInvitationCard);
+      centerSplitLeft.addEventListener('click', openInvitationCard);
+      centerSplitRight.addEventListener('click', openInvitationCard);
+      closeCardBtn.addEventListener('click', closeInvitationCard);
+      if (boothCopyCard) boothCopyCard.addEventListener('click', copyBoothLocation);
+
+      // THREE.JS SCENE INTEGRATION
+// THREE.JS SCENE INTEGRATION (WITH LOCAL 3d_model.glb LOADER FALLBACK)
+// THREE.JS SCENE INTEGRATION
+function createMonitorTexture() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 340;
+        const ctx = canvas.getContext('2d');
+
+        // Window Background
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(0, 0, 512, 340);
+
+        // Top Title Bar in Deep Navy
+        ctx.fillStyle = '#172554';
+        ctx.fillRect(0, 0, 512, 36);
+        ctx.fillStyle = '#FFB000';
+        ctx.font = 'bold 18px sans-serif';
+        ctx.fillText('Vegam — Statex Electronics', 18, 24);
+
+        // Center Software Card
+        ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(110, 86, 292, 165);
+
+        // Coral Red Statex Logo Box inside screen
+        ctx.fillStyle = '#FF4343';
+        ctx.fillRect(186, 108, 140, 38);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'italic bold 24px Georgia, serif';
+        ctx.fillText('Statex', 218, 134);
+
+        ctx.fillStyle = '#172554';
+        ctx.font = 'bold 16px sans-serif';
+        ctx.fillText('High Volume Fiber Testing Suite', 136, 178);
+
+        // Live Vibrant Orange / Gold Progress Bar
+        ctx.fillStyle = '#e2e8f0';
+        ctx.fillRect(140, 202, 232, 18);
+        ctx.fillStyle = '#FF6B35';
+        ctx.fillRect(140, 202, 175, 18);
+
+        return new THREE.CanvasTexture(canvas);
+      }
+
+      function init3DScene() {
+        if (is3DInitialized) return;
+        if (typeof THREE === 'undefined') return;
+        is3DInitialized = true;
+
+        targetLookAt = new THREE.Vector3(0, 1.15, 0);
+        currentLookAt = new THREE.Vector3(0, 1.15, 0);
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff);
+
+        const width = canvasContainer.clientWidth || window.innerWidth;
+        const height = canvasContainer.clientHeight || 500;
+
+        camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+        renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.12;
+
+        canvasContainer.appendChild(renderer.domElement);
+
+        // Bright Studio Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.92);
+        scene.add(ambientLight);
+
+        const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
+        keyLight.position.set(5.5, 9, 6.5);
+        keyLight.castShadow = true;
+        scene.add(keyLight);
+
+        const rimLight = new THREE.DirectionalLight(0xFFB000, 0.42);
+        rimLight.position.set(-6, 5, -5);
+        scene.add(rimLight);
+
+        const fillLight = new THREE.DirectionalLight(0x7B2CBF, 0.25);
+        fillLight.position.set(0, -3, 5);
+        scene.add(fillLight);
+
+        // Materials matching Statex Vegam + Brand Palette Accents
+        const tealCabinetMat = new THREE.MeshStandardMaterial({
+          color: 0x00bcba,
+          metalness: 0.2,
+          roughness: 0.35
+        });
+        const navyAccentMat = new THREE.MeshStandardMaterial({
+          color: 0x172554,
+          metalness: 0.35,
+          roughness: 0.35
+        });
+        const darkCounterMat = new THREE.MeshStandardMaterial({
+          color: 0x1e293b,
+          metalness: 0.25,
+          roughness: 0.45
+        });
+        const whiteHoodMat = new THREE.MeshStandardMaterial({
+          color: 0xf8fafc,
+          metalness: 0.12,
+          roughness: 0.28
+        });
+        const chromeMat = new THREE.MeshStandardMaterial({
+          color: 0xe2e8f0,
+          metalness: 0.85,
+          roughness: 0.18
+        });
+        const trayPurpleMat = new THREE.MeshStandardMaterial({
+          color: 0x7B2CBF,
+          roughness: 0.4
+        });
+        const redLogoMat = new THREE.MeshStandardMaterial({
+          color: 0xFF4343,
+          roughness: 0.3
+        });
+        const goldAccentMat = new THREE.MeshStandardMaterial({
+          color: 0xFFB000,
+          metalness: 0.6,
+          roughness: 0.25
+        });
+
+        machineGroup = new THREE.Group();
+
+        // 1. Left Cabinet Section (Operator Desk)
+        const leftCab = new THREE.Mesh(new THREE.BoxGeometry(2.35, 1.25, 1.15), tealCabinetMat);
+        leftCab.position.set(-1.1, 0.72, 0);
+        leftCab.castShadow = true;
+        leftCab.receiveShadow = true;
+        machineGroup.add(leftCab);
+
+        // Left Countertop
+        const leftTop = new THREE.Mesh(new THREE.BoxGeometry(2.48, 0.08, 1.28), darkCounterMat);
+        leftTop.position.set(-1.1, 1.38, 0);
+        leftTop.castShadow = true;
+        machineGroup.add(leftTop);
+
+        // 2. Right Cabinet Section (Testing Module Base)
+        const rightCab = new THREE.Mesh(new THREE.BoxGeometry(1.55, 1.32, 1.25), tealCabinetMat);
+        rightCab.position.set(0.85, 0.76, 0);
+        rightCab.castShadow = true;
+        rightCab.receiveShadow = true;
+        machineGroup.add(rightCab);
+
+        // Right Countertop
+        const rightTop = new THREE.Mesh(new THREE.BoxGeometry(1.68, 0.09, 1.38), darkCounterMat);
+        rightTop.position.set(0.85, 1.46, 0);
+        rightTop.castShadow = true;
+        machineGroup.add(rightTop);
+
+        // Cabinet Handles & Feet
+        [-2.05, -0.95, 0.15, 1.45].forEach(xPos => {
+          [-0.48, 0.48].forEach(zPos => {
+            const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.09, 0.12, 16), navyAccentMat);
+            foot.position.set(xPos, 0.06, zPos);
+            machineGroup.add(foot);
+          });
+        });
+
+        [-1.35, -0.55, 0.45].forEach(hx => {
+          const handle = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.22, 0.05), navyAccentMat);
+          handle.position.set(hx, 0.95, 0.62);
+          machineGroup.add(handle);
+        });
+
+        // 3. Operator Station: Monitor, Keyboard & Sample Trays on Left Deck
+        const monitorStand = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.34, 0.1), navyAccentMat);
+        monitorStand.position.set(-1.72, 1.58, -0.22);
+        machineGroup.add(monitorStand);
+
+        const monitorBezel = new THREE.Mesh(new THREE.BoxGeometry(0.86, 0.56, 0.05), navyAccentMat);
+        monitorBezel.position.set(-1.72, 1.88, -0.18);
+        monitorBezel.rotation.y = 0.22;
+        machineGroup.add(monitorBezel);
+
+        const screenMesh = new THREE.Mesh(
+          new THREE.PlaneGeometry(0.78, 0.49),
+          new THREE.MeshBasicMaterial({ map: createMonitorTexture() })
+        );
+        screenMesh.position.set(-1.714, 1.88, -0.153);
+        screenMesh.rotation.y = 0.22;
+        machineGroup.add(screenMesh);
+
+        const keyboard = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.025, 0.22), navyAccentMat);
+        keyboard.position.set(-1.72, 1.43, 0.14);
+        keyboard.rotation.y = 0.22;
+        machineGroup.add(keyboard);
+
+        // Two Sample Trays with Cotton Tuft Samples
+        [-1.95, -1.32].forEach(tx => {
+          const tray = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.09, 0.34), trayPurpleMat);
+          tray.position.set(tx, 1.46, 0.42);
+          machineGroup.add(tray);
+
+          const cottonSample = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.05, 0.26), whiteHoodMat);
+          cottonSample.position.set(tx, 1.5, 0.42);
+          machineGroup.add(cottonSample);
+        });
+
+        // Center Optical Preparation Unit
+        const prepBox = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.44, 0.52), navyAccentMat);
+        prepBox.position.set(-0.82, 1.64, -0.16);
+        machineGroup.add(prepBox);
+
+        // 4. Right Testing Hood (White Body + Gold & Teal Trim + Length/Strength & Color Chambers)
+        const hoodGroup = new THREE.Group();
+        hoodGroup.position.set(0.85, 1.5, 0);
+
+        const leftPillar = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.78, 0.72), whiteHoodMat);
+        leftPillar.position.set(-0.56, 0.39, 0);
+        leftPillar.rotation.z = -0.22;
+        hoodGroup.add(leftPillar);
+
+        const rightPillar = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.78, 0.72), whiteHoodMat);
+        rightPillar.position.set(0.56, 0.39, 0);
+        rightPillar.rotation.z = 0.22;
+        hoodGroup.add(rightPillar);
+
+        const hoodRoof = new THREE.Mesh(new THREE.BoxGeometry(1.06, 0.16, 0.72), whiteHoodMat);
+        hoodRoof.position.set(0, 0.74, 0);
+        hoodGroup.add(hoodRoof);
+
+        // Gold Foil Trim Band around Front Arch
+        const hoodTrim = new THREE.Mesh(new THREE.BoxGeometry(1.12, 0.19, 0.08), goldAccentMat);
+        hoodTrim.position.set(0, 0.74, 0.34);
+        hoodGroup.add(hoodTrim);
+
+        // Coral Red Statex Badge on Front Hood
+        const hoodBadge = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.08, 0.03), redLogoMat);
+        hoodBadge.position.set(0, 0.62, 0.36);
+        hoodGroup.add(hoodBadge);
+
+        // Chrome Length/Strength & Color Testing Wells
+        const chamber1 = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.04, 0.42), chromeMat);
+        chamber1.position.set(-0.24, 0.02, 0.08);
+        hoodGroup.add(chamber1);
+
+        const chamber2 = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.04, 0.42), chromeMat);
+        chamber2.position.set(0.26, 0.02, 0.08);
+        hoodGroup.add(chamber2);
+
+        // Animated Optical Scan Laser inside the Testing Hood
+        scanLaserMesh = new THREE.Mesh(
+          new THREE.BoxGeometry(0.86, 0.018, 0.018),
+          new THREE.MeshBasicMaterial({ color: 0xFF4343 })
+        );
+        scanLaserMesh.position.set(0, 0.14, 0.08);
+        hoodGroup.add(scanLaserMesh);
+
+        chamberGlowLight = new THREE.PointLight(0xFFB000, 1.1, 2.2);
+        chamberGlowLight.position.set(0, 0.42, 0.12);
+        hoodGroup.add(chamberGlowLight);
+
+        machineGroup.add(hoodGroup);
+
+        // 5. Subtle Gold-Tinted Floor Grid & Studio Shadow Disc
+        const gridHelper = new THREE.GridHelper(16, 32, 0xFFB000, 0xe2e8f0);
+        gridHelper.position.y = 0;
+        scene.add(gridHelper);
+
+        const shadowDisc = new THREE.Mesh(
+          new THREE.CircleGeometry(3.8, 48),
+          new THREE.MeshBasicMaterial({ color: 0xf8f6f2 })
+        );
+        shadowDisc.rotation.x = -Math.PI / 2;
+        shadowDisc.position.y = 0.002;
+        scene.add(shadowDisc);
+
+        scene.add(machineGroup);
+
+        // Bind Pointer & Touch Controls
+        bindCanvasControls();
+        window.addEventListener('resize', onWindowResize);
+      }
+
+      function onWindowResize() {
+        if (!is3DInitialized || !renderer || !camera) return;
+        const w = canvasContainer.clientWidth;
+        const h = canvasContainer.clientHeight;
+        if (w > 0 && h > 0) {
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+          renderer.setSize(w, h);
+        }
+      }
+
+      function bindCanvasControls() {
+        const dom = renderer.domElement;
+
+        dom.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          prevPointer = { x: e.clientX, y: e.clientY };
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging || !is3DOpen) return;
+          const dx = e.clientX - prevPointer.x;
+          const dy = e.clientY - prevPointer.y;
+          prevPointer = { x: e.clientX, y: e.clientY };
+
+          targetSpherical.theta -= dx * 0.0085;
+          targetSpherical.phi = Math.max(0.28, Math.min(1.48, targetSpherical.phi - dy * 0.0075));
+        });
+
+        window.addEventListener('mouseup', () => {
+          isDragging = false;
+        });
+
+        dom.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          targetSpherical.radius = Math.max(2.6, Math.min(10.5, targetSpherical.radius + e.deltaY * 0.0045));
+        }, { passive: false });
+
+        dom.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            isDragging = true;
+            prevPointer = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+          } else if (e.touches.length === 2) {
+            isDragging = false;
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            pinchStartDist = Math.hypot(dx, dy);
+          }
+        }, { passive: true });
+
+        dom.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 1 && isDragging) {
+            const dx = e.touches[0].clientX - prevPointer.x;
+            const dy = e.touches[0].clientY - prevPointer.y;
+            prevPointer = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+
+            targetSpherical.theta -= dx * 0.0095;
+            targetSpherical.phi = Math.max(0.28, Math.min(1.48, targetSpherical.phi - dy * 0.008));
+          } else if (e.touches.length === 2) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const dist = Math.hypot(dx, dy);
+            if (pinchStartDist > 0) {
+              const delta = pinchStartDist - dist;
+              targetSpherical.radius = Math.max(2.6, Math.min(10.5, targetSpherical.radius + delta * 0.015));
+            }
+            pinchStartDist = dist;
+          }
+        }, { passive: true });
+
+        dom.addEventListener('touchend', () => {
+          isDragging = false;
+          pinchStartDist = 0;
+        });
+      }
+
+      const clock = typeof THREE !== 'undefined' ? new THREE.Clock() : null;
+
+      function animate3D() {
+        if (!is3DOpen) return;
+        requestAnimationFrame(animate3D);
+
+        if (!is3DInitialized) return;
+        const elapsed = clock ? clock.getElapsedTime() : 0;
+
+        if (autoRotate && !isDragging) {
+          targetSpherical.theta += 0.0045;
+        }
+
+        if (scanLaserMesh) {
+          const speed = scanBoostTimer > 0 ? 7.5 : 2.6;
+          if (scanBoostTimer > 0) scanBoostTimer -= 0.016;
+          scanLaserMesh.position.z = 0.08 + Math.sin(elapsed * speed) * 0.18;
+          if (chamberGlowLight) {
+            chamberGlowLight.intensity = scanBoostTimer > 0 ? 2.4 + Math.sin(elapsed * 18) * 0.6 : 1.05;
+          }
+        }
+
+        // Smooth Damping for Camera Orbit & Target
+        currentSpherical.radius += (targetSpherical.radius - currentSpherical.radius) * 0.1;
+        currentSpherical.theta += (targetSpherical.theta - currentSpherical.theta) * 0.1;
+        currentSpherical.phi += (targetSpherical.phi - currentSpherical.phi) * 0.1;
+        currentLookAt.lerp(targetLookAt, 0.1);
+
+        const sinPhiRadius = currentSpherical.radius * Math.sin(currentSpherical.phi);
+        camera.position.set(
+          currentLookAt.x + sinPhiRadius * Math.sin(currentSpherical.theta),
+          currentLookAt.y + currentSpherical.radius * Math.cos(currentSpherical.phi),
+          currentLookAt.z + sinPhiRadius * Math.cos(currentSpherical.theta)
+        );
+        camera.lookAt(currentLookAt);
+
+        renderer.render(scene, camera);
+      }
+
+      // Camera Presets
+      const CAMERA_PRESETS = {
+        overview: {
+          radius: 6.2,
+          theta: 0.58,
+          phi: 1.12,
+          lookAt: [0, 1.15, 0],
+          tag: 'Full Console Overview',
+          heading: 'Statex Vegam Automated Testing Line',
+          desc: 'Modular twin-cabinet console with Vegam control station, sample trays, optical unit, and arched Length, Strength & Color testing hood.'
+        },
+        hood: {
+          radius: 3.3,
+          theta: 0.25,
+          phi: 1.05,
+          lookAt: [0.85, 1.75, 0.05],
+          tag: 'Optical & Mechanical Chambers',
+          heading: 'Length, Strength & Color Module',
+          desc: 'Dual chrome testing wells with high-speed optical fiber scanning and precision pneumatic clamp assembly.'
+        },
+        operator: {
+          radius: 3.5,
+          theta: -0.45,
+          phi: 1.08,
+          lookAt: [-1.45, 1.55, 0],
+          tag: 'Control & Sample Prep',
+          heading: 'Vegam Workstation & Sample Trays',
+          desc: 'Integrated touchscreen/PC Vegam suite with ergonomic keyboard and twin cotton sample preparation trays.'
+        }
+      };
+
+      function applyPreset(key) {
+        const preset = CAMERA_PRESETS[key];
+        if (!preset) return;
+
+        targetSpherical.radius = preset.radius;
+        targetSpherical.theta = preset.theta;
+        targetSpherical.phi = preset.phi;
+        if (targetLookAt) {
+          targetLookAt.set(preset.lookAt[0], preset.lookAt[1], preset.lookAt[2]);
+        }
+
+        hotspotTag.textContent = preset.tag;
+        hotspotHeading.textContent = preset.heading;
+        hotspotDesc.textContent = preset.desc;
+
+        presetBtns.forEach(btn => {
+          if (btn.dataset.preset === key) {
+            btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#172554] text-white border border-[#172554] shadow-sm transition cursor-pointer';
+          } else {
+            btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-[#FFB000]/15 text-[#172554] border border-slate-300 transition cursor-pointer';
+          }
+        });
+      }
+
+      function updateAutoRotateUI() {
+        const label = toggleAutoRotateBtn.querySelector('span:last-child');
+        if (autoRotate) {
+          label.textContent = 'Auto-Rotate: ON';
+          autoRotateDot.className = 'w-2 h-2 rounded-full bg-[#7B2CBF]';
+        } else {
+          label.textContent = 'Auto-Rotate: OFF';
+          autoRotateDot.className = 'w-2 h-2 rounded-full bg-slate-400';
+        }
+      }
+
+      function open360Modal() {
+        init3DScene();
+        is3DOpen = true;
+        modal360.classList.remove('hidden');
+        modal360.classList.add('flex');
+
+        requestAnimationFrame(() => {
+          modal360.classList.remove('opacity-0');
+          modal360.classList.add('opacity-100');
+          onWindowResize();
+          animate3D();
+        });
+      }
+
+      function close360Modal() {
+        is3DOpen = false;
+        modal360.classList.remove('opacity-100');
+        modal360.classList.add('opacity-0');
+        setTimeout(() => {
+          modal360.classList.add('hidden');
+          modal360.classList.remove('flex');
+        }, 300);
+      }
+
+      open360Btn.addEventListener('click', open360Modal);
+      close360Btn.addEventListener('click', close360Modal);
+
+      modal360.addEventListener('click', (e) => {
+        if (e.target === modal360) close360Modal();
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && is3DOpen) close360Modal();
+      });
+
+      presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          autoRotate = false;
+          updateAutoRotateUI();
+          applyPreset(btn.dataset.preset);
+        });
+      });
+
+      toggleAutoRotateBtn.addEventListener('click', () => {
+        autoRotate = !autoRotate;
+        updateAutoRotateUI();
+      });
+
+      runTestCycleBtn.addEventListener('click', () => {
+        autoRotate = false;
+        updateAutoRotateUI();
+        applyPreset('hood');
+        scanBoostTimer = 3.2;
+      });
+
+      resetViewBtn.addEventListener('click', () => {
+        autoRotate = true;
+        updateAutoRotateUI();
+        applyPreset('overview');
+      });
+    })();
+  </script>
+</body>
+</html>
