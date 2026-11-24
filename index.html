@@ -590,27 +590,22 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start m-0 p-0 select-none antialiased overflow-x-hidden">
 
-  <!-- LUXURY STATE-OF-THE-ART PRELOADER: MINIMAL CLEAN STATEX LOGO & PERCENTAGE -->
+  <!-- LUXURY STATE-OF-THE-ART PRELOADER: EXACT STATEX LOGO CAPSULE & PROMINENT PROGRESS -->
   <div id="invitationPreloader" aria-label="Loading Invitation">
-    <div class="relative flex items-center justify-center mb-6">
-      <span class="preloader-glow-ring"></span>
-      <span class="preloader-glow-ring-2"></span>
-      <!-- Soft white circular aura behind logo medallion matching the reference design -->
-      <div class="w-32 h-32 rounded-full bg-white/90 shadow-[0_10px_40px_rgba(200,150,62,0.25)] flex items-center justify-center border border-amber-200/60">
-        <!-- Exact Statex Red Medallion -->
-        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-[#99000a] via-[#e30613] to-[#ff2b38] shadow-lg flex items-center justify-center border-2 border-[#fef08a]">
-          <span class="font-black italic text-2xl text-white tracking-tight drop-shadow-md">Statex</span>
-        </div>
+    <!-- Exact Statex Red Capsule Badge (No circular mask) -->
+    <div class="mb-7 flex flex-col items-center">
+      <div class="inline-flex items-center justify-center px-8 py-3 rounded-2xl bg-[#e30613] text-white shadow-[0_8px_30px_rgba(227,6,19,0.35)] border-2 border-[#ffecb3]">
+        <span class="font-extrabold italic text-3xl sm:text-4xl tracking-tight leading-none text-white drop-shadow-md">Statex®</span>
       </div>
     </div>
 
-    <!-- Minimal Progress Bar & Percentage Only -->
+    <!-- Clear, Highly Visible Progress Bar & Bold Percentage -->
     <div class="flex flex-col items-center text-center px-4">
-      <div class="w-48 sm:w-56 h-2 bg-amber-100/90 rounded-full overflow-hidden border border-[#b45309]/30 shadow-inner p-0.5">
+      <div class="w-56 sm:w-64 h-2.5 bg-amber-900/10 rounded-full overflow-hidden border border-[#854d0e]/40 shadow-inner p-0.5">
         <div id="preloaderBarFill" class="preloader-bar-fill" style="width: 5%;"></div>
       </div>
 
-      <span id="preloaderPercentText" class="text-xs font-black text-[#854d0e] tracking-widest mt-2.5">
+      <span id="preloaderPercentText" class="text-sm sm:text-base font-black text-[#68330c] tracking-widest mt-3 drop-shadow-sm">
         5%
       </span>
     </div>
@@ -722,9 +717,9 @@
           </svg>
         </button>
         <div class="text-center mt-3 pointer-events-none">
-          <div class="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-gradient-to-r from-[#1b0306]/95 via-[#3a060d]/95 to-[#1b0306]/95 border border-[#f5c358] text-[#ffe599] text-[11px] sm:text-[12px] font-black tracking-[0.22em] uppercase shadow-[0_6px_20px_rgba(0,0,0,0.75),0_0_15px_rgba(245,195,88,0.4)] backdrop-blur-md">
-            <span class="drop-shadow-sm">Tap Seal to Open</span>
-            <svg class="w-4 h-4 text-[#ffda6b] animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <div class="inline-flex items-center justify-center gap-3 w-64 sm:w-72 px-8 py-2.5 rounded-full bg-gradient-to-r from-[#1b0306]/95 via-[#3a060d]/95 to-[#1b0306]/95 border border-[#f5c358] text-[#ffe599] text-[11px] sm:text-[12px] font-black tracking-[0.24em] uppercase shadow-[0_6px_20px_rgba(0,0,0,0.75),0_0_15px_rgba(245,195,88,0.4)] backdrop-blur-md">
+            <span class="drop-shadow-sm whitespace-nowrap">Tap Seal to Open</span>
+            <svg class="w-4 h-4 text-[#ffda6b] animate-bounce shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
             </svg>
           </div>
@@ -807,36 +802,33 @@
           <span>December 4th to 9th, 2026</span>
         </div>
 
-        <!-- 6. STREAMLINED PRODUCT SHOWCASE & 3D LAUNCHER (COMPACT & COMPLETE) -->
-        <div data-step="5" class="reveal-step shrink-0 w-full max-w-[280px] sm:max-w-xs">
-          <div class="rounded-xl bg-white/95 p-2.5 border border-amber-300/80 shadow-md flex flex-col items-center">
+        <!-- 6. STREAMLINED PRODUCT SHOWCASE & 3D LAUNCHER (EXPANDED TO FILL BOTTOM SPACE) -->
+        <div data-step="5" class="reveal-step shrink-0 w-full max-w-[310px] sm:max-w-sm mb-1">
+          <div class="rounded-2xl bg-white/95 p-3 sm:p-3.5 border-2 border-amber-300/80 shadow-md flex flex-col items-center">
             
-            <!-- Compact Title & Badge -->
-            <div class="w-full flex items-center justify-between gap-1 pb-1">
-              <span class="text-[11px] font-black text-[#172554]">
+            <!-- Centered Title -->
+            <div class="w-full flex items-center justify-center pb-1">
+              <span class="text-xs sm:text-sm font-black text-[#172554] tracking-tight">
                 Statex Vegam Testing System
-              </span>
-              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-900 border border-purple-200 text-[8px] font-black uppercase">
-                High-Volume
               </span>
             </div>
 
-            <!-- Product Photo -->
-            <div class="w-full h-24 sm:h-28 my-1 flex items-center justify-center bg-gradient-to-b from-white to-slate-50 rounded-lg border border-slate-100 overflow-hidden">
-              <img src="statex_vegam_product.png" alt="Statex Vegam Testing System" class="h-full max-h-24 sm:max-h-28 object-contain mx-auto" onerror="this.src='https://placehold.co/600x320/ffffff/172554?text=Statex+Vegam+Testing+System';">
+            <!-- Product Photo (Enlarged Machine View Filling The Box) -->
+            <div class="w-full h-44 sm:h-52 my-1.5 flex items-center justify-center bg-gradient-to-b from-white to-slate-50 rounded-xl border border-slate-100 overflow-hidden p-1.5">
+              <img src="statex_vegam_machine_tight.png" alt="Statex Vegam Testing System" class="h-full w-full max-h-44 sm:max-h-52 object-contain mx-auto transition-transform duration-300 hover:scale-105" onerror="this.src='statex_vegam_product.png';">
             </div>
 
             <!-- 360° 3D Model Launch Button inside product card -->
-            <button id="open360Btn" type="button" class="w-full mt-1.5 inline-flex items-center justify-between p-1 rounded-xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] hover:opacity-95 text-white shadow border border-amber-400 transition active:scale-95 cursor-pointer">
-              <div class="flex items-center gap-1.5 pl-2.5">
-                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <button id="open360Btn" type="button" class="w-full mt-2 inline-flex items-center justify-between p-1.5 rounded-xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] hover:opacity-95 text-white shadow-md border border-amber-400 transition active:scale-95 cursor-pointer">
+              <div class="flex items-center gap-2 pl-3">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                 </svg>
-                <span class="text-sm font-black tracking-wide text-white">360°</span>
+                <span class="text-sm sm:text-base font-black tracking-wide text-white">360°</span>
               </div>
-              <div class="h-5 w-px bg-white/20"></div>
-              <div class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-[#e30613] text-white text-[10px] font-black shadow">
-                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <div class="h-6 w-px bg-white/20"></div>
+              <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#e30613] text-white text-[11px] sm:text-xs font-black shadow">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                 </svg>
                 <span>3D MODEL</span>
@@ -882,10 +874,7 @@
           touch-action="pan-y"
           shadow-intensity="2"
           shadow-softness="0.5"
-          exposure="1.25"
-          interaction-prompt="auto"
-          ar
-          ar-modes="webxr scene-viewer quick-look"
+          exposure="1.uto"
           class="w-full h-full"
           style="width: 100%; height: 100%; outline: none; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 60%, #090d16 100%);">
           
