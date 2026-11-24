@@ -16,9 +16,8 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Three.js & GLTFLoader for 360° Interactive 3D Model -->
-  <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+  <!-- Google Model Viewer (Official Web Component for 3D GLB Models) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -515,9 +514,135 @@
       background: #c8963e;
       border-radius: 9999px;
     }
+
+    /* =========================================================================
+       LUXURY GOLDEN PRELOADER
+       ========================================================================= */
+    #invitationPreloader {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: radial-gradient(circle at 50% 38%, #fffaf0 0%, #fdf3d8 35%, #f7e2a9 65%, #ecd089 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.85s cubic-bezier(0.25, 1, 0.35, 1), visibility 0.85s linear;
+      box-shadow: inset 0 0 100px rgba(184, 134, 11, 0.15);
+    }
+
+    /* Ambient luxury shimmer texture on golden preloader */
+    #invitationPreloader::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 248, 220, 0.3) 50%, transparent 80%);
+      pointer-events: none;
+    }
+
+    #invitationPreloader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .preloader-glow-ring {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(200, 150, 62, 0.55);
+      animation: preloaderPulse 2.4s ease-in-out infinite;
+    }
+
+    .preloader-glow-ring-2 {
+      position: absolute;
+      width: 175px;
+      height: 175px;
+      border-radius: 9999px;
+      border: 1.5px dashed rgba(184, 134, 11, 0.4);
+      animation: preloaderRotate 14s linear infinite;
+    }
+
+    @keyframes preloaderPulse {
+      0%, 100% {
+        transform: scale(0.93);
+        opacity: 0.5;
+        box-shadow: 0 0 20px rgba(218, 165, 32, 0.35);
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 1;
+        box-shadow: 0 0 45px rgba(230, 180, 50, 0.6);
+      }
+    }
+
+    @keyframes preloaderRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .preloader-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #c8963e, #e30613, #b8860b);
+      border-radius: 9999px;
+      box-shadow: 0 0 10px rgba(200, 150, 62, 0.6);
+      animation: preloaderProgress 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes preloaderProgress {
+      0% { width: 4%; }
+      50% { width: 68%; }
+      100% { width: 100%; }
+    }
+
+    /* =========================================================================
+       ANIMATED ENTRANCE FOR ENVELOPE COVER TEXT
+       ========================================================================= */
+    .cover-anim-item {
+      opacity: 0;
+      transform: translateY(22px) scale(0.96);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cover-anim-item.animate-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start m-0 p-0 select-none antialiased overflow-x-hidden">
+
+  <!-- LUXURY STATE-OF-THE-ART PRELOADER -->
+  <div id="invitationPreloader" aria-label="Loading Invitation">
+    <div class="relative flex items-center justify-center mb-7">
+      <span class="preloader-glow-ring"></span>
+      <span class="preloader-glow-ring-2"></span>
+      <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-[#99000a] via-[#e30613] to-[#ff2b38] p-1.5 shadow-[0_10px_30px_rgba(200,150,62,0.45)] flex items-center justify-center border-2 border-[#fef08a]">
+        <span class="font-black italic text-2xl text-white tracking-tight drop-shadow-md">Statex</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center text-center px-4">
+      <h2 class="text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-[#854d0e]">
+        India ITME 2026
+      </h2>
+      <p class="text-[10px] sm:text-[11px] font-bold text-[#713f12]/80 tracking-widest uppercase mt-1">
+        Official VIP Exhibition Invitation
+      </p>
+
+      <!-- Animated Golden Progress Meter -->
+      <div class="w-48 sm:w-56 h-2 bg-amber-100/80 rounded-full overflow-hidden border border-[#b45309]/30 shadow-inner mt-5 p-0.5">
+        <div class="preloader-bar-fill"></div>
+      </div>
+
+      <span class="text-[9px] uppercase font-extrabold text-[#92400e] tracking-widest mt-2 animate-pulse">
+        Preparing Experience...
+      </span>
+    </div>
+  </div>
 
   <!-- MAIN INVITATION FRAME WITH CENTER-SPLIT DOORS -->
   <main id="tiltMainStage" class="invitation-perspective-stage">
@@ -534,15 +659,15 @@
         <div class="door-bg-pane"></div>
       </div>
 
-      <!-- TEASER OVERLAY ON CLOSED DOORS (PIXEL PERFECT REPLICA OF USER REFERENCE IMAGE) -->
-      <div class="cover-teaser-plaque select-none px-4">
+      <!-- TEASER OVERLAY ON CLOSED DOORS (PIXEL PERFECT REPLICA WITH ANIMATED ENTRANCE) -->
+      <div id="coverTeaserPlaque" class="cover-teaser-plaque select-none px-4">
         <!-- 1. STATEX RED CAPSULE BADGE -->
-        <div class="inline-flex items-center justify-center px-7 py-2.5 rounded-2xl bg-[#e30613] text-white shadow-md">
+        <div class="cover-anim-item inline-flex items-center justify-center px-7 py-2.5 rounded-2xl bg-[#e30613] text-white shadow-md">
           <span class="font-extrabold italic text-2xl sm:text-3xl tracking-tight leading-none">Statex®</span>
         </div>
 
         <!-- 2. OFFICIAL EXHIBITION PASS WITH FLANKING GOLDEN HAIRLINES -->
-        <div class="mt-4 flex items-center justify-center w-full max-w-[270px] sm:max-w-xs gap-3">
+        <div class="cover-anim-item mt-4 flex items-center justify-center w-full max-w-[270px] sm:max-w-xs gap-3">
           <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
           <span class="text-[9px] sm:text-[10px] font-black tracking-[0.22em] text-[#172554] uppercase whitespace-nowrap">
             Official Exhibition Pass
@@ -551,7 +676,7 @@
         </div>
 
         <!-- 3. EXACT FLAME LOGO + "India ITME 2026 Exhibition" -->
-        <div class="mt-4 flex items-center justify-center gap-3.5 w-full max-w-[280px] sm:max-w-sm">
+        <div class="cover-anim-item mt-4 flex items-center justify-center gap-3.5 w-full max-w-[280px] sm:max-w-sm">
           <!-- Authentic Flame Emblem -->
           <img src="itme_flame_logo.png" alt="India ITME Flame" class="w-11 sm:w-12 h-auto object-contain drop-shadow-sm shrink-0">
 
@@ -573,7 +698,7 @@
         </div>
 
         <!-- 4. TWO-COLUMN DATE & VENUE / STALL INFO -->
-        <div class="mt-5 w-full max-w-[270px] sm:max-w-[290px] flex items-center justify-center gap-4 text-left">
+        <div class="cover-anim-item mt-5 w-full max-w-[270px] sm:max-w-[290px] flex items-center justify-center gap-4 text-left">
           <!-- Left Column: 4-9 Dec 2026 -->
           <div class="flex flex-col items-center justify-center min-w-[65px] shrink-0">
             <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-none">
@@ -626,10 +751,9 @@
         </button>
         <div class="text-center mt-2.5 pointer-events-none">
           <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#1b0306]/90 via-[#3a060d]/90 to-[#1b0306]/90 border border-[#f5c358]/80 text-[#ffe599] text-[10px] sm:text-[11px] font-black tracking-[0.2em] uppercase shadow-[0_4px_15px_rgba(0,0,0,0.7),0_0_12px_rgba(245,195,88,0.35)] backdrop-blur-md">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#ffda6b] shadow-[0_0_8px_#ffda6b] animate-ping"></span>
             <span class="drop-shadow-sm">Tap Seal to Open</span>
-            <svg class="w-3 h-3 text-[#ffda6b] animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            <svg class="w-3.5 h-3.5 text-[#ffda6b] animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
             </svg>
           </div>
         </div>
@@ -788,28 +912,16 @@
   </main>
 
   <!-- ========================================================= -->
-  <!-- MODAL: FULLSCREEN INTERACTIVE 360° 3D VIEWER               -->
+  <!-- MODAL: CLEAN INTERACTIVE 3D VIEWER POPUP                   -->
   <!-- ========================================================= -->
-  <div id="modal360" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4 md:p-6 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal360Title">
-    <div class="relative w-full max-w-4xl h-[90vh] sm:h-[84vh] rounded-2xl bg-white border border-amber-300/40 shadow-2xl flex flex-col overflow-hidden">
+  <div id="modal360" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-5 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal360Title">
+    <div class="relative w-full max-w-2xl h-[80vh] sm:h-[75vh] rounded-2xl bg-white border border-amber-300/40 shadow-2xl flex flex-col overflow-hidden">
       
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between px-4 sm:px-6 py-3 bg-[#172554] text-white border-b border-amber-400/30 z-10 shrink-0">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center text-[#172554]">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 id="modal360Title" class="text-xs sm:text-sm font-extrabold text-white leading-tight">
-              Statex Vegam Console — 360° Interactive Model
-            </h3>
-            <p class="text-[10px] sm:text-xs text-amber-300">
-              India ITME 2026 • Stall H9G7 • Drag to rotate, pinch to zoom
-            </p>
-          </div>
-        </div>
+      <!-- 1. POPUP HEADER: Model Name & Close Button Only -->
+      <div class="flex items-center justify-between px-5 py-3.5 bg-[#172554] text-white border-b border-amber-400/30 z-10 shrink-0">
+        <h3 id="modal360Title" class="text-sm sm:text-base font-extrabold text-white tracking-wide">
+          Statex Vegam Testing System
+        </h3>
 
         <button id="close360Btn" type="button" aria-label="Close 3D Viewer" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#e30613] text-white flex items-center justify-center transition cursor-pointer">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -818,40 +930,54 @@
         </button>
       </div>
 
-      <!-- 3D Canvas Container -->
-      <div id="canvas3dContainer" class="relative flex-1 w-full h-full bg-slate-100 cursor-grab active:cursor-grabbing overflow-hidden select-none">
-        <div id="hotspotInfo" class="absolute bottom-3 left-3 right-3 sm:right-auto sm:max-w-xs z-10 rounded-xl bg-white/95 border border-slate-200 p-3 shadow-md backdrop-blur-sm">
-          <div class="text-[9px] font-bold uppercase tracking-wider text-[#e30613]" id="hotspotTag">Full Console</div>
-          <div class="text-xs sm:text-sm font-extrabold text-[#172554] mt-0.5" id="hotspotHeading">Statex Vegam Automated Testing Line</div>
-          <p class="text-[11px] text-slate-600 mt-1 leading-relaxed" id="hotspotDesc">
-            High-Volume Cotton Fiber Testing Console with Length, Strength & Color modules.
-          </p>
-        </div>
+      <!-- 2. 3D MODEL: Google Model Viewer Viewport -->
+      <div id="canvas3dContainer" class="relative flex-1 w-full h-full bg-slate-50 overflow-hidden select-none">
+        <model-viewer
+          id="statexModelViewer"
+          src="3d_model.glb"
+          alt="Statex Vegam 3D Model"
+          auto-rotate
+          rotation-per-second="25deg"
+          camera-controls
+          touch-action="pan-y"
+          shadow-intensity="1.5"
+          shadow-softness="0.8"
+          exposure="1.1"
+          interaction-prompt="auto"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          class="w-full h-full"
+          style="width: 100%; height: 100%; outline: none; background-color: #fafbfc;">
+          
+          <!-- Centered Spinner Overlay until 3D Model is Loaded -->
+          <div id="model3dSpinner" slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50/95 z-30 transition-opacity duration-500">
+            <!-- Dual Ring Spinners -->
+            <div class="relative w-16 h-16 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-4 border-slate-200"></div>
+              <div class="absolute inset-0 rounded-full border-4 border-t-[#e30613] border-r-[#c8963e] border-b-transparent border-l-transparent animate-spin"></div>
+              <!-- Center Statex Logo dot -->
+              <div class="w-3 h-3 rounded-full bg-[#e30613] shadow-md animate-ping"></div>
+            </div>
+            <p id="spinnerText" class="mt-4 text-xs font-bold uppercase tracking-widest text-[#172554]">
+              Loading 3D Model...
+            </p>
+            <div class="w-36 h-1 bg-slate-200 rounded-full overflow-hidden mt-2.5">
+              <div id="spinnerProgressBar" class="h-full bg-gradient-to-r from-[#e30613] to-[#c8963e] w-0 transition-all duration-200"></div>
+            </div>
+          </div>
+
+        </model-viewer>
       </div>
 
-      <!-- Bottom Controls Toolbar -->
-      <div class="px-3 sm:px-6 py-2.5 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 z-10 shrink-0">
-        <div class="flex items-center gap-1.5 overflow-x-auto py-1">
-          <button type="button" data-preset="overview" class="preset-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-[#172554] text-white transition cursor-pointer">
-            Overview
-          </button>
-          <button type="button" data-preset="hood" class="preset-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer">
-            Testing Hood
-          </button>
-          <button type="button" data-preset="operator" class="preset-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer">
-            Operator Console
-          </button>
-        </div>
-
-        <div class="flex items-center gap-1.5 ml-auto">
-          <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white text-[#172554] border border-slate-300 transition cursor-pointer">
-            <span id="autoRotateDot" class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>Auto-Rotate: ON</span>
-          </button>
-          <button id="resetViewBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer">
-            Reset
-          </button>
-        </div>
+      <!-- 3. CONTROLS BELOW 3D MODEL: Auto-Rotate and Reset Only -->
+      <div class="px-5 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-center gap-3 z-10 shrink-0">
+        <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 shadow-sm transition active:scale-95 cursor-pointer">
+          <span id="autoRotateDot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Auto-Rotate: ON</span>
+        </button>
+        <button id="resetViewBtn" type="button" class="px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 shadow-sm transition active:scale-95 cursor-pointer">
+          Reset
+        </button>
       </div>
 
     </div>
@@ -860,6 +986,37 @@
   <!-- SCRIPT -->
   <script>
     (function () {
+      const preloader = document.getElementById('invitationPreloader');
+      const coverAnimItems = Array.from(document.querySelectorAll('.cover-anim-item'));
+
+      // Dismiss preloader and trigger animated entrance of envelope text
+      function triggerEnvelopeEntrance() {
+        coverAnimItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('animate-in');
+          }, 200 + index * 180);
+        });
+      }
+
+      function dismissPreloader() {
+        if (!preloader) return;
+        setTimeout(() => {
+          preloader.classList.add('is-hidden');
+          setTimeout(() => {
+            triggerEnvelopeEntrance();
+            try { preloader.remove(); } catch (e) {}
+          }, 800);
+        }, 1200);
+      }
+
+      if (document.readyState === 'complete') {
+        dismissPreloader();
+      } else {
+        window.addEventListener('load', dismissPreloader);
+        // Fallback safety timeout if any external CDN is slow
+        setTimeout(dismissPreloader, 2600);
+      }
+
       const envelope = document.getElementById('invitationEnvelope');
       const insideCard = document.getElementById('insideCard');
       const openSealBtn = document.getElementById('openSealBtn');
@@ -880,9 +1037,7 @@
       const resetViewBtn = document.getElementById('resetViewBtn');
       const presetBtns = Array.from(document.querySelectorAll('.preset-btn'));
 
-      const hotspotTag = document.getElementById('hotspotTag');
-      const hotspotHeading = document.getElementById('hotspotHeading');
-      const hotspotDesc = document.getElementById('hotspotDesc');
+      // hotspot elements removed
 
       let isCardOpen = false;
       let revealTimers = [];
@@ -975,363 +1130,98 @@
       closeCardBtn.addEventListener('click', closeInvitationCard);
       // boothCopyCard listener removed
 
-      // THREE.JS SCENE INTEGRATION & STATE VARIABLES
-      let scene, camera, renderer, machineGroup;
-      let is3DInitialized = false;
-      let is3DOpen = false;
-      let targetLookAt = null;
-      let currentLookAt = null;
-      let targetSpherical = { radius: 6.2, theta: 0.58, phi: 1.12 };
-      let currentSpherical = { radius: 6.2, theta: 0.58, phi: 1.12 };
-      let autoRotate = true;
-      let isDragging = false;
-      let prevPointer = { x: 0, y: 0 };
-      let pinchStartDist = 0;
-      let scanLaserMesh = null;
-      let scanBoostTimer = 0;
-      let chamberGlowLight = null;
+      // GOOGLE MODEL VIEWER INTEGRATION
+      const modelViewer = document.getElementById('statexModelViewer');
+      const model3dSpinner = document.getElementById('model3dSpinner');
+      const spinnerText = document.getElementById('spinnerText');
+      const spinnerProgressBar = document.getElementById('spinnerProgressBar');
+      let autoRotateActive = true;
 
-      function createMonitorTexture() {
-        const canvas = document.createElement('canvas');
-        canvas.width = 512;
-        canvas.height = 340;
-        const ctx = canvas.getContext('2d');
-
-        // Window Background
-        ctx.fillStyle = '#f8fafc';
-        ctx.fillRect(0, 0, 512, 340);
-
-        // Top Title Bar in Deep Navy
-        ctx.fillStyle = '#172554';
-        ctx.fillRect(0, 0, 512, 36);
-        ctx.fillStyle = '#FFB000';
-        ctx.font = 'bold 18px sans-serif';
-        ctx.fillText('Vegam — Statex Electronics', 18, 24);
-
-        // Center Software Card
-        ctx.fillStyle = '#ffffff';
-        ctx.strokeStyle = '#cbd5e1';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(110, 86, 292, 165);
-
-        // Coral Red Statex Logo Box inside screen
-        ctx.fillStyle = '#FF4343';
-        ctx.fillRect(186, 108, 140, 38);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'italic bold 24px Georgia, serif';
-        ctx.fillText('Statex', 218, 134);
-
-        ctx.fillStyle = '#172554';
-        ctx.font = 'bold 16px sans-serif';
-        ctx.fillText('High Volume Fiber Testing Suite', 136, 178);
-
-        // Live Vibrant Orange / Gold Progress Bar
-        ctx.fillStyle = '#e2e8f0';
-        ctx.fillRect(140, 202, 232, 18);
-        ctx.fillStyle = '#FF6B35';
-        ctx.fillRect(140, 202, 175, 18);
-
-        return new THREE.CanvasTexture(canvas);
-      }
-
-      function init3DScene() {
-        if (is3DInitialized) return;
-        if (typeof THREE === 'undefined') return;
-        is3DInitialized = true;
-
-        targetLookAt = new THREE.Vector3(0, 1.15, 0);
-        currentLookAt = new THREE.Vector3(0, 1.15, 0);
-
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xffffff);
-
-        const width = canvasContainer.clientWidth || window.innerWidth;
-        const height = canvasContainer.clientHeight || 500;
-
-        camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-        renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.12;
-
-        canvasContainer.appendChild(renderer.domElement);
-
-        // Bright Studio Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.92);
-        scene.add(ambientLight);
-
-        const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
-        keyLight.position.set(5.5, 9, 6.5);
-        keyLight.castShadow = true;
-        scene.add(keyLight);
-
-        const rimLight = new THREE.DirectionalLight(0xFFB000, 0.42);
-        rimLight.position.set(-6, 5, -5);
-        scene.add(rimLight);
-
-        const fillLight = new THREE.DirectionalLight(0x7B2CBF, 0.25);
-        fillLight.position.set(0, -3, 5);
-        scene.add(fillLight);
-
-        machineGroup = new THREE.Group();
-        scene.add(machineGroup);
-
-        // Subtle Gold-Tinted Floor Grid & Studio Shadow Disc
-        const gridHelper = new THREE.GridHelper(16, 32, 0xc8963e, 0xe2e8f0);
-        gridHelper.position.y = 0;
-        scene.add(gridHelper);
-
-        const shadowDisc = new THREE.Mesh(
-          new THREE.CircleGeometry(3.8, 48),
-          new THREE.MeshBasicMaterial({ color: 0xf1f5f9 })
-        );
-        shadowDisc.rotation.x = -Math.PI / 2;
-        shadowDisc.position.y = 0.002;
-        scene.add(shadowDisc);
-
-        // DIRECTLY LOAD USER'S 3d_model.glb
-        const loadingIndicator = document.createElement('div');
-        loadingIndicator.id = 'gltfLoadingBadge';
-        loadingIndicator.className = 'absolute top-4 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-[#172554]/95 text-amber-200 text-xs font-bold shadow-xl border border-amber-400/60 flex items-center gap-2.5 backdrop-blur-md pointer-events-none transition-all duration-300';
-        loadingIndicator.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span><span>Loading 3d_model.glb...</span>';
-        canvasContainer.appendChild(loadingIndicator);
-
-        function loadGLB() {
-          const LoaderClass = THREE.GLTFLoader;
-          if (!LoaderClass) {
-            console.error('GLTFLoader not found on THREE');
-            loadingIndicator.innerHTML = '<span class="text-red-400">GLTFLoader unavailable</span>';
-            return;
-          }
-
-          const loader = new LoaderClass();
-          loader.load(
-            '3d_model.glb',
-            function (gltf) {
-              const loadedModel = gltf.scene || gltf.scenes[0];
-              loadedModel.traverse(function (child) {
-                if (child.isMesh) {
-                  child.castShadow = true;
-                  child.receiveShadow = true;
-                  // Ensure materials are rendered accurately with proper colors
-                  if (child.material) {
-                    child.material.side = THREE.DoubleSide;
-                    child.material.needsUpdate = true;
-                  }
-                }
-              });
-
-              // Compute bounding box to center and scale user model accurately
-              const box = new THREE.Box3().setFromObject(loadedModel);
-              const size = box.getSize(new THREE.Vector3());
-              const center = box.getCenter(new THREE.Vector3());
-
-              const maxDim = Math.max(size.x, size.y, size.z);
-              if (maxDim > 0) {
-                const targetScale = 3.6 / maxDim;
-                loadedModel.scale.setScalar(targetScale);
-                loadedModel.position.x = -center.x * targetScale;
-                loadedModel.position.y = (-center.y * targetScale) + (size.y * targetScale * 0.5) + 0.05;
-                loadedModel.position.z = -center.z * targetScale;
-
-                targetLookAt.set(0, loadedModel.position.y, 0);
-                currentLookAt.copy(targetLookAt);
-              }
-
-              while (machineGroup.children.length > 0) {
-                machineGroup.remove(machineGroup.children[0]);
-              }
-              machineGroup.add(loadedModel);
-
-              if (loadingIndicator) {
-                loadingIndicator.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span>3D Model Ready</span>';
-                setTimeout(() => {
-                  loadingIndicator.classList.add('opacity-0');
-                  setTimeout(() => loadingIndicator.remove(), 400);
-                }, 600);
-              }
-            },
-            function (xhr) {
-              if (xhr.lengthComputable && loadingIndicator) {
-                const percent = Math.round((xhr.loaded / xhr.total) * 100);
-                loadingIndicator.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span><span>Loading 3d_model.glb (${percent}%)...</span>`;
-              }
-            },
-            function (error) {
-              console.error('Failed to load 3d_model.glb:', error);
-              if (loadingIndicator) {
-                loadingIndicator.innerHTML = '<span class="text-red-400 font-bold">Error loading 3d_model.glb (CORS/Network)</span>';
-              }
-            }
-          );
-        }
-
-        loadGLB();
-
-        // Bind Pointer & Touch Controls
-        bindCanvasControls();
-        window.addEventListener('resize', onWindowResize);
-      }
-
-      function onWindowResize() {
-        if (!is3DInitialized || !renderer || !camera) return;
-        const w = canvasContainer.clientWidth;
-        const h = canvasContainer.clientHeight;
-        if (w > 0 && h > 0) {
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
-          renderer.setSize(w, h);
-        }
-      }
-
-      function bindCanvasControls() {
-        const dom = renderer.domElement;
-
-        dom.addEventListener('mousedown', (e) => {
-          isDragging = true;
-          prevPointer = { x: e.clientX, y: e.clientY };
+      if (modelViewer) {
+        modelViewer.addEventListener('progress', (e) => {
+          const percent = Math.round(e.detail.totalProgress * 100);
+          if (spinnerProgressBar) spinnerProgressBar.style.width = percent + '%';
+          if (spinnerText) spinnerText.textContent = `Loading 3D Model (${percent}%)...`;
         });
 
-        window.addEventListener('mousemove', (e) => {
-          if (!isDragging || !is3DOpen) return;
-          const dx = e.clientX - prevPointer.x;
-          const dy = e.clientY - prevPointer.y;
-          prevPointer = { x: e.clientX, y: e.clientY };
-
-          targetSpherical.theta -= dx * 0.0085;
-          targetSpherical.phi = Math.max(0.28, Math.min(1.48, targetSpherical.phi - dy * 0.0075));
+        modelViewer.addEventListener('load', () => {
+          if (model3dSpinner) {
+            model3dSpinner.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => model3dSpinner.style.display = 'none', 500);
+          }
         });
 
-        window.addEventListener('mouseup', () => {
-          isDragging = false;
-        });
-
-        dom.addEventListener('wheel', (e) => {
-          e.preventDefault();
-          targetSpherical.radius = Math.max(2.6, Math.min(10.5, targetSpherical.radius + e.deltaY * 0.0045));
-        }, { passive: false });
-
-        dom.addEventListener('touchstart', (e) => {
-          if (e.touches.length === 1) {
-            isDragging = true;
-            prevPointer = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-          } else if (e.touches.length === 2) {
-            isDragging = false;
-            const dx = e.touches[0].clientX - e.touches[1].clientX;
-            const dy = e.touches[0].clientY - e.touches[1].clientY;
-            pinchStartDist = Math.hypot(dx, dy);
-          }
-        }, { passive: true });
-
-        dom.addEventListener('touchmove', (e) => {
-          if (e.touches.length === 1 && isDragging) {
-            const dx = e.touches[0].clientX - prevPointer.x;
-            const dy = e.touches[0].clientY - prevPointer.y;
-            prevPointer = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-
-            targetSpherical.theta -= dx * 0.0095;
-            targetSpherical.phi = Math.max(0.28, Math.min(1.48, targetSpherical.phi - dy * 0.008));
-          } else if (e.touches.length === 2) {
-            const dx = e.touches[0].clientX - e.touches[1].clientX;
-            const dy = e.touches[0].clientY - e.touches[1].clientY;
-            const dist = Math.hypot(dx, dy);
-            if (pinchStartDist > 0) {
-              const delta = pinchStartDist - dist;
-              targetSpherical.radius = Math.max(2.6, Math.min(10.5, targetSpherical.radius + delta * 0.015));
-            }
-            pinchStartDist = dist;
-          }
-        }, { passive: true });
-
-        dom.addEventListener('touchend', () => {
-          isDragging = false;
-          pinchStartDist = 0;
+        modelViewer.addEventListener('error', (err) => {
+          console.error('Model Viewer error:', err);
+          if (spinnerText) spinnerText.textContent = 'Please view via local web server (http://localhost)';
         });
       }
 
-      const clock = typeof THREE !== 'undefined' ? new THREE.Clock() : null;
-
-      function animate3D() {
-        if (!is3DOpen) return;
-        requestAnimationFrame(animate3D);
-
-        if (!is3DInitialized) return;
-        const elapsed = clock ? clock.getElapsedTime() : 0;
-
-        if (autoRotate && !isDragging) {
-          targetSpherical.theta += 0.0045;
+      function updateAutoRotateUI() {
+        const label = toggleAutoRotateBtn.querySelector('span:last-child');
+        if (autoRotateActive) {
+          modelViewer.setAttribute('auto-rotate', '');
+          label.textContent = 'Auto-Rotate: ON';
+          autoRotateDot.className = 'w-2 h-2 rounded-full bg-emerald-500';
+        } else {
+          modelViewer.removeAttribute('auto-rotate');
+          label.textContent = 'Auto-Rotate: OFF';
+          autoRotateDot.className = 'w-2 h-2 rounded-full bg-slate-400';
         }
-
-        if (scanLaserMesh) {
-          const speed = scanBoostTimer > 0 ? 7.5 : 2.6;
-          if (scanBoostTimer > 0) scanBoostTimer -= 0.016;
-          scanLaserMesh.position.z = 0.08 + Math.sin(elapsed * speed) * 0.18;
-          if (chamberGlowLight) {
-            chamberGlowLight.intensity = scanBoostTimer > 0 ? 2.4 + Math.sin(elapsed * 18) * 0.6 : 1.05;
-          }
-        }
-
-        // Smooth Damping for Camera Orbit & Target
-        currentSpherical.radius += (targetSpherical.radius - currentSpherical.radius) * 0.1;
-        currentSpherical.theta += (targetSpherical.theta - currentSpherical.theta) * 0.1;
-        currentSpherical.phi += (targetSpherical.phi - currentSpherical.phi) * 0.1;
-        currentLookAt.lerp(targetLookAt, 0.1);
-
-        const sinPhiRadius = currentSpherical.radius * Math.sin(currentSpherical.phi);
-        camera.position.set(
-          currentLookAt.x + sinPhiRadius * Math.sin(currentSpherical.theta),
-          currentLookAt.y + currentSpherical.radius * Math.cos(currentSpherical.phi),
-          currentLookAt.z + sinPhiRadius * Math.cos(currentSpherical.theta)
-        );
-        camera.lookAt(currentLookAt);
-
-        renderer.render(scene, camera);
       }
 
-      // Camera Presets
-      const CAMERA_PRESETS = {
+      function open360Modal() {
+        modal360.classList.remove('hidden');
+        modal360.classList.add('flex');
+        autoRotateActive = true;
+        updateAutoRotateUI();
+
+        requestAnimationFrame(() => {
+          modal360.classList.remove('opacity-0');
+          modal360.classList.add('opacity-100');
+        });
+      }
+
+      function close360Modal() {
+        modal360.classList.remove('opacity-100');
+        modal360.classList.add('opacity-0');
+        setTimeout(() => {
+          modal360.classList.add('hidden');
+          modal360.classList.remove('flex');
+        }, 300);
+      }
+
+      // Camera Presets for Google Model Viewer
+      const VIEW_PRESETS = {
         overview: {
-          radius: 6.2,
-          theta: 0.58,
-          phi: 1.12,
-          lookAt: [0, 1.15, 0],
-          tag: 'Full Console Overview',
-          heading: 'Statex Vegam Automated Testing Line',
-          desc: 'Modular twin-cabinet console with Vegam control station, sample trays, optical unit, and arched Length, Strength & Color testing hood.'
+          orbit: '45deg 75deg 105%',
+          target: 'auto auto auto',
+          tag: 'Full Console',
+          heading: 'Statex Vegam Testing System',
+          desc: 'High-Volume Cotton Fiber Testing Console with Length, Strength & Color modules.'
         },
         hood: {
-          radius: 3.3,
-          theta: 0.25,
-          phi: 1.05,
-          lookAt: [0.85, 1.75, 0.05],
-          tag: 'Optical & Mechanical Chambers',
+          orbit: '15deg 80deg 75%',
+          target: 'auto auto auto',
+          tag: 'Testing Chamber',
           heading: 'Length, Strength & Color Module',
-          desc: 'Dual chrome testing wells with high-speed optical fiber scanning and precision pneumatic clamp assembly.'
+          desc: 'Automated testing compartment with precision optical and mechanical sensors.'
         },
         operator: {
-          radius: 3.5,
-          theta: -0.45,
-          phi: 1.08,
-          lookAt: [-1.45, 1.55, 0],
-          tag: 'Control & Sample Prep',
-          heading: 'Vegam Workstation & Sample Trays',
-          desc: 'Integrated touchscreen/PC Vegam suite with ergonomic keyboard and twin cotton sample preparation trays.'
+          orbit: '-45deg 70deg 85%',
+          target: 'auto auto auto',
+          tag: 'Operator Console',
+          heading: 'Vegam Touchscreen Workstation',
+          desc: 'Integrated control terminal and sample preparation workspace.'
         }
       };
 
       function applyPreset(key) {
-        const preset = CAMERA_PRESETS[key];
-        if (!preset) return;
+        const preset = VIEW_PRESETS[key];
+        if (!preset || !modelViewer) return;
 
-        targetSpherical.radius = preset.radius;
-        targetSpherical.theta = preset.theta;
-        targetSpherical.phi = preset.phi;
-        if (targetLookAt) {
-          targetLookAt.set(preset.lookAt[0], preset.lookAt[1], preset.lookAt[2]);
-        }
+        modelViewer.cameraOrbit = preset.orbit;
+        modelViewer.cameraTarget = preset.target;
 
         hotspotTag.textContent = preset.tag;
         hotspotHeading.textContent = preset.heading;
@@ -1341,46 +1231,9 @@
           if (btn.dataset.preset === key) {
             btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#172554] text-white border border-[#172554] shadow-sm transition cursor-pointer';
           } else {
-            btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-[#FFB000]/15 text-[#172554] border border-slate-300 transition cursor-pointer';
+            btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer';
           }
         });
-      }
-
-      function updateAutoRotateUI() {
-        const label = toggleAutoRotateBtn.querySelector('span:last-child');
-        if (autoRotate) {
-          label.textContent = 'Auto-Rotate: ON';
-          autoRotateDot.className = 'w-2 h-2 rounded-full bg-[#7B2CBF]';
-        } else {
-          label.textContent = 'Auto-Rotate: OFF';
-          autoRotateDot.className = 'w-2 h-2 rounded-full bg-slate-400';
-        }
-      }
-
-      function open360Modal() {
-        init3DScene();
-        is3DOpen = true;
-        autoRotate = true; // Auto rotation active by default when popup opens
-        updateAutoRotateUI();
-        modal360.classList.remove('hidden');
-        modal360.classList.add('flex');
-
-        requestAnimationFrame(() => {
-          modal360.classList.remove('opacity-0');
-          modal360.classList.add('opacity-100');
-          onWindowResize();
-          animate3D();
-        });
-      }
-
-      function close360Modal() {
-        is3DOpen = false;
-        modal360.classList.remove('opacity-100');
-        modal360.classList.add('opacity-0');
-        setTimeout(() => {
-          modal360.classList.add('hidden');
-          modal360.classList.remove('flex');
-        }, 300);
       }
 
       open360Btn.addEventListener('click', open360Modal);
@@ -1396,31 +1249,20 @@
 
       presetBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          autoRotate = false;
-          updateAutoRotateUI();
           applyPreset(btn.dataset.preset);
         });
       });
 
       toggleAutoRotateBtn.addEventListener('click', () => {
-        autoRotate = !autoRotate;
+        autoRotateActive = !autoRotateActive;
         updateAutoRotateUI();
       });
 
-      const runTestCycleBtn = document.getElementById('runTestCycleBtn');
-      if (runTestCycleBtn) {
-        runTestCycleBtn.addEventListener('click', () => {
-          autoRotate = false;
-          updateAutoRotateUI();
-          applyPreset('hood');
-          scanBoostTimer = 3.2;
-        });
-      }
-
       resetViewBtn.addEventListener('click', () => {
-        autoRotate = true;
+        autoRotateActive = true;
         updateAutoRotateUI();
         applyPreset('overview');
+        if (modelViewer) modelViewer.resetTurntableRotation();
       });
     })();
   </script>
