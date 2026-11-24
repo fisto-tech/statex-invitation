@@ -60,20 +60,23 @@
       margin: 0;
       padding: 0;
       width: 100%;
+      max-width: 100vw;
       min-height: 100%;
+      overflow-x: hidden !important;
     }
 
     body {
       font-family: var(--font-main);
       background-color: #1e0205;
       color: #172554;
-      overflow-x: hidden;
+      overflow-x: hidden !important;
+      position: relative;
       /* Deep luxury theatre atmosphere with soft ambient spotlight */
       background: radial-gradient(circle at 50% 25%, #47060f 0%, #200206 55%, #0d0002 100%);
       background-attachment: fixed;
     }
 
-    /* Outer Stage Wrapper - strictly flush with top */
+    /* Outer Stage Wrapper - strictly flush with top, no horizontal overflow */
     .invitation-perspective-stage {
       width: 100%;
       max-width: 100%;
@@ -84,6 +87,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      overflow-x: hidden;
     }
 
     @media (min-width: 640px) {
@@ -139,11 +143,12 @@
       }
     }
 
-    /* When open, the master frame expands smoothly so the inside card is naturally scrollable */
+    /* When open, the master frame expands smoothly so the inside card is naturally scrollable without horizontal overflow */
     .envelope-master-frame.is-open {
       height: auto !important;
       min-height: 100dvh;
-      overflow: visible;
+      overflow-x: clip !important;
+      overflow-y: visible;
       background: transparent;
       box-shadow: none;
     }
@@ -218,17 +223,21 @@
       background-repeat: no-repeat;
     }
 
-    /* OPEN CENTER SPLIT EFFECT */
+    /* OPEN CENTER SPLIT EFFECT - hide and collapse after opening to prevent horizontal scrolling */
     .envelope-master-frame.is-open .center-split-left {
-      transform: rotateY(-130deg) translateX(-15px);
+      transform: rotateY(-110deg) translateX(-10px);
       opacity: 0;
       pointer-events: none;
+      visibility: hidden;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease 0.6s, visibility 0s linear 1.2s;
     }
 
     .envelope-master-frame.is-open .center-split-right {
-      transform: rotateY(130deg) translateX(15px);
+      transform: rotateY(110deg) translateX(10px);
       opacity: 0;
       pointer-events: none;
+      visibility: hidden;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease 0.6s, visibility 0s linear 1.2s;
     }
 
     /* Seam Shimmer Glow removed by default so center line does not show */
@@ -660,29 +669,20 @@
           </h1>
         </div>
 
-        <!-- 4. EXHIBITION PAVILION & STALL CARD (HALL 9 / H9G7) WITH TAP TO COPY -->
+        <!-- 4. EXHIBITION PAVILION & STALL CARD (HALL 9 / H9G7) -->
         <div data-step="3" class="reveal-step mt-4 w-full max-w-xs sm:max-w-sm">
-          <div id="boothCopyCard" role="button" tabindex="0" title="Click to copy stall details" class="group rounded-2xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] p-3 text-white shadow-lg border border-amber-300/40 transition-all cursor-pointer text-left">
-            <div class="flex items-center justify-between gap-2.5">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#f59e0b] flex items-center justify-center text-[#172554] shrink-0 shadow">
-                  <!-- Location Pin SVG -->
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <div class="text-[9px] uppercase font-bold tracking-wider text-amber-300">Exhibition Pavilion &amp; Stall</div>
-                  <div class="text-lg sm:text-xl font-black text-white tracking-wide">Hall 9 / H9G7</div>
-                </div>
-              </div>
-              <div class="h-8 w-px bg-white/20"></div>
-              <button type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#e30613] text-white text-xs font-bold shadow transition-transform group-hover:scale-105 shrink-0">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+          <div class="rounded-2xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#4c0d60] p-3.5 text-white shadow-lg border border-amber-300/40 text-left">
+            <div class="flex items-center justify-center gap-3.5">
+              <div class="w-10 h-10 rounded-full bg-[#f59e0b] flex items-center justify-center text-[#172554] shrink-0 shadow-md">
+                <!-- Location Pin SVG -->
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
                 </svg>
-                <span id="boothBadgeText">Tap to Copy</span>
-              </button>
+              </div>
+              <div>
+                <div class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-amber-300">Exhibition Pavilion &amp; Stall</div>
+                <div class="text-xl sm:text-2xl font-black text-white tracking-wide leading-tight">Hall 9 / H9G7</div>
+              </div>
             </div>
           </div>
         </div>
@@ -856,8 +856,8 @@
       const centerSplitRight = document.getElementById('centerSplitRight');
       const closeCardBtn = document.getElementById('closeCardBtn');
       // topControls removed (back button moved inside envelope)
-      const boothCopyCard = document.getElementById('boothCopyCard');
-      const boothBadgeText = document.getElementById('boothBadgeText');
+      // boothCopyCard removed
+      // boothBadgeText removed
       const revealSteps = Array.from(document.querySelectorAll('.reveal-step'));
 
       const open360Btn = document.getElementById('open360Btn');
@@ -911,24 +911,7 @@
         }
       }
 
-      // Copy Booth Location
-      function copyBoothLocation() {
-        const text = 'Statex — Hall 9 / H9G7, India ITME 2026 (Dec 4–9, Greater Noida)';
-        const tempInput = document.createElement('textarea');
-        tempInput.value = text;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        try {
-          document.execCommand('copy');
-          boothBadgeText.textContent = 'Copied ✓';
-          setTimeout(() => {
-            boothBadgeText.textContent = 'Tap to Copy';
-          }, 2000);
-        } catch (err) {
-          boothBadgeText.textContent = 'India Expo Mart';
-        }
-        document.body.removeChild(tempInput);
-      }
+      // Booth Location Info
 
       // Open Invitation Card (Center Split Doors open from middle)
       function openInvitationCard() {
@@ -978,12 +961,25 @@
       centerSplitLeft.addEventListener('click', openInvitationCard);
       centerSplitRight.addEventListener('click', openInvitationCard);
       closeCardBtn.addEventListener('click', closeInvitationCard);
-      if (boothCopyCard) boothCopyCard.addEventListener('click', copyBoothLocation);
+      // boothCopyCard listener removed
 
-      // THREE.JS SCENE INTEGRATION
-// THREE.JS SCENE INTEGRATION (WITH LOCAL 3d_model.glb LOADER FALLBACK)
-// THREE.JS SCENE INTEGRATION
-function createMonitorTexture() {
+      // THREE.JS SCENE INTEGRATION & STATE VARIABLES
+      let scene, camera, renderer, machineGroup;
+      let is3DInitialized = false;
+      let is3DOpen = false;
+      let targetLookAt = null;
+      let currentLookAt = null;
+      let targetSpherical = { radius: 6.2, theta: 0.58, phi: 1.12 };
+      let currentSpherical = { radius: 6.2, theta: 0.58, phi: 1.12 };
+      let autoRotate = true;
+      let isDragging = false;
+      let prevPointer = { x: 0, y: 0 };
+      let pinchStartDist = 0;
+      let scanLaserMesh = null;
+      let scanBoostTimer = 0;
+      let chamberGlowLight = null;
+
+      function createMonitorTexture() {
         const canvas = document.createElement('canvas');
         canvas.width = 512;
         canvas.height = 340;
@@ -1256,6 +1252,64 @@ function createMonitorTexture() {
 
         scene.add(machineGroup);
 
+        // Load User's 3d_model.glb with GLTFLoader
+        if (typeof THREE.GLTFLoader !== 'undefined') {
+          const loader = new THREE.GLTFLoader();
+          const loadingIndicator = document.createElement('div');
+          loadingIndicator.id = 'gltfLoadingBadge';
+          loadingIndicator.className = 'absolute top-3 left-1/2 -translate-x-1/2 z-20 px-3.5 py-1.5 rounded-full bg-[#172554]/90 text-amber-200 text-xs font-bold shadow-lg border border-amber-400/50 flex items-center gap-2 backdrop-blur-sm pointer-events-none transition-opacity duration-300';
+          loadingIndicator.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span><span>Loading 3D Model...</span>';
+          canvasContainer.appendChild(loadingIndicator);
+
+          loader.load(
+            '3d_model.glb',
+            function (gltf) {
+              const loadedModel = gltf.scene;
+              loadedModel.traverse(function (child) {
+                if (child.isMesh) {
+                  child.castShadow = true;
+                  child.receiveShadow = true;
+                }
+              });
+
+              // Compute bounding box to center and scale model automatically
+              const box = new THREE.Box3().setFromObject(loadedModel);
+              const size = box.getSize(new THREE.Vector3());
+              const center = box.getCenter(new THREE.Vector3());
+
+              const maxDim = Math.max(size.x, size.y, size.z);
+              if (maxDim > 0) {
+                const targetScale = 3.2 / maxDim;
+                loadedModel.scale.setScalar(targetScale);
+                loadedModel.position.x = -center.x * targetScale;
+                loadedModel.position.y = (-center.y * targetScale) + 1.15;
+                loadedModel.position.z = -center.z * targetScale;
+              }
+
+              // Replace fallback procedural machine with authentic GLB model
+              machineGroup.clear();
+              machineGroup.add(loadedModel);
+
+              if (loadingIndicator && loadingIndicator.parentNode) {
+                loadingIndicator.classList.add('opacity-0');
+                setTimeout(() => loadingIndicator.remove(), 400);
+              }
+            },
+            function (xhr) {
+              if (xhr.lengthComputable && loadingIndicator) {
+                const percent = Math.round((xhr.loaded / xhr.total) * 100);
+                loadingIndicator.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span><span>Loading 3D Model (${percent}%)...</span>`;
+              }
+            },
+            function (error) {
+              console.warn('GLTFLoader notice:', error);
+              if (loadingIndicator && loadingIndicator.parentNode) {
+                loadingIndicator.remove();
+              }
+            }
+          );
+        }
+
         // Bind Pointer & Touch Controls
         bindCanvasControls();
         window.addEventListener('resize', onWindowResize);
@@ -1445,6 +1499,8 @@ function createMonitorTexture() {
       function open360Modal() {
         init3DScene();
         is3DOpen = true;
+        autoRotate = true; // Auto rotation active by default when popup opens
+        updateAutoRotateUI();
         modal360.classList.remove('hidden');
         modal360.classList.add('flex');
 
@@ -1490,12 +1546,15 @@ function createMonitorTexture() {
         updateAutoRotateUI();
       });
 
-      runTestCycleBtn.addEventListener('click', () => {
-        autoRotate = false;
-        updateAutoRotateUI();
-        applyPreset('hood');
-        scanBoostTimer = 3.2;
-      });
+      const runTestCycleBtn = document.getElementById('runTestCycleBtn');
+      if (runTestCycleBtn) {
+        runTestCycleBtn.addEventListener('click', () => {
+          autoRotate = false;
+          updateAutoRotateUI();
+          applyPreset('hood');
+          scanBoostTimer = 3.2;
+        });
+      }
 
       resetViewBtn.addEventListener('click', () => {
         autoRotate = true;
