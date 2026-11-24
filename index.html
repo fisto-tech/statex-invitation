@@ -517,7 +517,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 248, 220, 0.3) 50%, transparent 80%);
+      background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 248, 220, 0.15) 50%, transparent 80%);
       pointer-events: none;
     }
 
@@ -590,22 +590,22 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start m-0 p-0 select-none antialiased overflow-x-hidden">
 
-  <!-- LUXURY STATE-OF-THE-ART PRELOADER: EXACT STATEX LOGO CAPSULE & PROMINENT PROGRESS -->
+  <!-- LUXURY STATE-OF-THE-ART PRELOADER: VIVID HIGH-CONTRAST STATEX LOGO & PROGRESS -->
   <div id="invitationPreloader" aria-label="Loading Invitation">
-    <!-- Exact Statex Red Capsule Badge (No circular mask) -->
-    <div class="mb-7 flex flex-col items-center">
-      <div class="inline-flex items-center justify-center px-8 py-3 rounded-2xl bg-[#e30613] text-white shadow-[0_8px_30px_rgba(227,6,19,0.35)] border-2 border-[#ffecb3]">
-        <span class="font-extrabold italic text-3xl sm:text-4xl tracking-tight leading-none text-white drop-shadow-md">Statex®</span>
+    <!-- Vivid Statex Red Capsule Badge with Maximum Contrast -->
+    <div class="mb-8 flex flex-col items-center z-10">
+      <div class="inline-flex items-center justify-center px-9 py-3.5 rounded-2xl bg-[#e30613] text-white shadow-[0_12px_35px_rgba(227,6,19,0.45),0_0_20px_rgba(255,215,0,0.4)] border-2 border-[#fff8d6]">
+        <span class="font-extrabold italic text-3xl sm:text-4xl tracking-tight leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Statex®</span>
       </div>
     </div>
 
-    <!-- Clear, Highly Visible Progress Bar & Bold Percentage -->
-    <div class="flex flex-col items-center text-center px-4">
-      <div class="w-56 sm:w-64 h-2.5 bg-amber-900/10 rounded-full overflow-hidden border border-[#854d0e]/40 shadow-inner p-0.5">
+    <!-- Clear, Highly Visible Progress Bar & Bold Dark Percentage Text -->
+    <div class="flex flex-col items-center text-center px-4 z-10">
+      <div class="w-60 sm:w-68 h-3 bg-amber-950/15 rounded-full overflow-hidden border border-[#78350f]/60 shadow-inner p-0.5">
         <div id="preloaderBarFill" class="preloader-bar-fill" style="width: 5%;"></div>
       </div>
 
-      <span id="preloaderPercentText" class="text-sm sm:text-base font-black text-[#68330c] tracking-widest mt-3 drop-shadow-sm">
+      <span id="preloaderPercentText" class="text-sm sm:text-base font-black text-[#5c2405] tracking-widest mt-3.5 drop-shadow-sm">
         5%
       </span>
     </div>
@@ -734,13 +734,8 @@
         <!-- Double Gold Hairline Border -->
         <div class="gold-foil-inner-border"></div>
 
-        <!-- INSIDE TOP BAR: VIP Pass & Back Button -->
-        <div class="w-full flex items-center justify-between z-20 px-1 shrink-0 mb-0.5">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#172554]/80 border border-amber-400/40 text-amber-200 text-[9px] font-bold tracking-wider uppercase backdrop-blur-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#e30613] animate-pulse"></span>
-            <span>VIP Pass</span>
-          </div>
-
+        <!-- INSIDE TOP BAR: Back Button Only -->
+        <div class="w-full flex items-center justify-end z-20 px-1 shrink-0 mb-0.5">
           <button id="closeCardBtn" type="button" aria-label="Back to Envelope" title="Close invitation and fold envelope" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/60 hover:bg-[#e30613] text-amber-200 hover:text-white text-[10px] font-bold border border-amber-300/40 shadow-sm transition active:scale-95 cursor-pointer backdrop-blur-sm">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -923,14 +918,15 @@
 
       // Smooth progress counter from 0 to 100%
       let progressPercent = 0;
+      let hasFinished = false;
       const progressInterval = setInterval(() => {
-        if (progressPercent < 90) {
-          progressPercent += Math.floor(Math.random() * 8) + 4;
+        if (!hasFinished && progressPercent < 90) {
+          progressPercent += Math.floor(Math.random() * 6) + 3;
           if (progressPercent > 90) progressPercent = 90;
           if (preloaderBarFill) preloaderBarFill.style.width = progressPercent + '%';
           if (preloaderPercentText) preloaderPercentText.textContent = progressPercent + '%';
         }
-      }, 70);
+      }, 80);
 
       // Dismiss preloader and trigger animated entrance of envelope text
       function triggerEnvelopeEntrance() {
@@ -942,8 +938,11 @@
       }
 
       function dismissPreloader() {
-        if (!preloader) return;
+        if (!preloader || hasFinished) return;
+        hasFinished = true;
         clearInterval(progressInterval);
+        
+        // Ensure user clearly sees 100% before fading out
         if (preloaderBarFill) preloaderBarFill.style.width = '100%';
         if (preloaderPercentText) preloaderPercentText.textContent = '100%';
 
@@ -952,17 +951,12 @@
           setTimeout(() => {
             triggerEnvelopeEntrance();
             try { preloader.remove(); } catch (e) {}
-          }, 700);
-        }, 350);
+          }, 850);
+        }, 600);
       }
 
-      if (document.readyState === 'complete') {
-        dismissPreloader();
-      } else {
-        window.addEventListener('load', dismissPreloader);
-        // Fallback safety timeout if any external CDN is slow
-        setTimeout(dismissPreloader, 2600);
-      }
+      // Allow preloader to show clearly for at least 1.6s so Statex logo & progress are visible
+      setTimeout(dismissPreloader, 1600);
 
       const envelope = document.getElementById('invitationEnvelope');
       const insideCard = document.getElementById('insideCard');
