@@ -8,13 +8,16 @@
   <link rel="icon" type="image/png" href="statex-logo.png">
   <link rel="apple-touch-icon" href="statex-logo.png">
 
-  <!-- Google Font: Lexend -->
+  <!-- Google Fonts: Montserrat, Poppins, Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Iconify Icon Web Component -->
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
   <!-- Google Model Viewer (Official Web Component for 3D GLB Models) -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
@@ -24,7 +27,10 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Lexend', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
           },
           colors: {
             brand: {
@@ -44,7 +50,10 @@
 
   <style>
     :root {
-      --font-main: 'Lexend', sans-serif;
+      --font-main: 'Inter', sans-serif;
+      --font-title: 'Montserrat', sans-serif;
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
       --color-gold: #c8963e;
       --color-gold-bright: #ffd700;
       --color-burgundy-dark: #220206;
@@ -234,21 +243,19 @@
 
     /* OPEN CENTER SPLIT EFFECT */
     .envelope-master-frame.is-open .center-split-left {
-      transform: rotateY(-95deg);
+      transform: rotateY(-110deg) translateX(-10px);
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
-      display: none;
-      transition: transform 0.85s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.4s ease 0.4s, visibility 0s linear 0.85s;
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease 0.9s, visibility 0s linear 1.8s;
     }
 
     .envelope-master-frame.is-open .center-split-right {
-      transform: rotateY(95deg);
+      transform: rotateY(110deg) translateX(10px);
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
-      display: none;
-      transition: transform 0.85s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.4s ease 0.4s, visibility 0s linear 0.85s;
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease 0.9s, visibility 0s linear 1.8s;
     }
 
     /* Seam Shimmer Glow removed by default so center line does not show */
@@ -651,7 +658,7 @@
         <!-- 2. OFFICIAL EXHIBITION PASS WITH FLANKING GOLDEN HAIRLINES -->
         <div class="cover-anim-item mt-4 flex items-center justify-center w-full max-w-[270px] sm:max-w-xs gap-3">
           <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
-          <span class="text-[9px] sm:text-[10px] font-black tracking-[0.22em] text-[#172554] uppercase whitespace-nowrap">
+          <span class="font-montserrat font-bold text-[9px] sm:text-[10px] tracking-[0.22em] text-[#172554] uppercase whitespace-nowrap">
             Official Exhibition Pass
           </span>
           <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
@@ -667,13 +674,13 @@
 
           <!-- Exhibition Title Stack -->
           <div class="text-left flex flex-col justify-center">
-            <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-[1.05]">
+            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#172554] tracking-tight leading-[1.05]">
               India ITME
             </div>
-            <div class="text-2xl sm:text-3xl font-black text-[#e30613] tracking-tight leading-[1.05] mt-0.5">
+            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#e30613] tracking-tight leading-[1.05] mt-0.5">
               2026
             </div>
-            <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-[1.05] mt-0.5">
+            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#172554] tracking-tight leading-[1.05] mt-0.5">
               Exhibition
             </div>
           </div>
@@ -683,10 +690,10 @@
         <div class="cover-anim-item mt-5 w-full max-w-[270px] sm:max-w-[290px] flex items-center justify-center gap-4 text-left">
           <!-- Left Column: 4-9 Dec 2026 -->
           <div class="flex flex-col items-center justify-center min-w-[65px] shrink-0">
-            <div class="text-2xl sm:text-3xl font-black text-[#172554] tracking-tight leading-none">
+            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#172554] tracking-tight leading-none">
               4–9
             </div>
-            <div class="text-[11px] sm:text-xs font-black text-[#e30613] uppercase tracking-wide mt-1">
+            <div class="font-montserrat font-bold text-[11px] sm:text-xs text-[#e30613] uppercase tracking-wide mt-1">
               Dec 2026
             </div>
           </div>
@@ -696,13 +703,13 @@
 
           <!-- Right Column: Greater Noida / India Expo Mart & Stall Badge -->
           <div class="flex flex-col items-start justify-center">
-            <div class="text-xs sm:text-[13px] font-extrabold text-[#172554] leading-tight">
+            <div class="font-inter font-medium text-xs sm:text-[13px] text-[#172554] leading-tight">
               Greater Noida
             </div>
-            <div class="text-[10px] sm:text-[11px] font-bold text-slate-600 leading-tight mt-0.5">
+            <div class="font-inter font-normal text-[10px] sm:text-[11px] text-slate-600 leading-tight mt-0.5">
               India Expo Mart
             </div>
-            <div class="mt-1 inline-flex items-center px-2.5 py-0.5 rounded-md bg-[#172554] text-amber-300 text-[10px] sm:text-[11px] font-black tracking-wider uppercase shadow-sm">
+            <div class="mt-1 inline-flex items-center px-2.5 py-0.5 rounded-md bg-[#172554] text-amber-300 font-montserrat font-bold text-[10px] sm:text-[11px] tracking-wider uppercase shadow-sm">
               Hall 9 / H9G7
             </div>
           </div>
@@ -732,7 +739,7 @@
           </svg>
         </button>
         <div class="text-center mt-3 pointer-events-none">
-          <div class="inline-flex items-center justify-center gap-3 w-64 sm:w-72 px-8 py-2.5 rounded-full bg-gradient-to-r from-[#1b0306]/95 via-[#3a060d]/95 to-[#1b0306]/95 border border-[#f5c358] text-[#ffe599] text-[11px] sm:text-[12px] font-black tracking-[0.24em] uppercase shadow-[0_6px_20px_rgba(0,0,0,0.75),0_0_15px_rgba(245,195,88,0.4)] backdrop-blur-md">
+          <div class="inline-flex items-center justify-center gap-3 w-64 sm:w-72 px-8 py-2.5 rounded-full bg-gradient-to-r from-[#1b0306]/95 via-[#3a060d]/95 to-[#1b0306]/95 border border-[#f5c358] text-[#ffe599] font-montserrat font-bold text-[11px] sm:text-[12px] tracking-[0.24em] uppercase shadow-[0_6px_20px_rgba(0,0,0,0.75),0_0_15px_rgba(245,195,88,0.4)] backdrop-blur-md">
             <span class="drop-shadow-sm whitespace-nowrap">Tap Seal to Open</span>
             <svg class="w-4 h-4 text-[#ffda6b] animate-bounce shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
@@ -767,7 +774,7 @@
         </div>
 
         <!-- 2. "YOU ARE CORDIALLY INVITED" PILL BADGE -->
-        <div data-step="1" class="reveal-step shrink-0 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#112244] border border-amber-400 text-amber-300 text-[9px] sm:text-[10px] font-black tracking-[0.18em] uppercase shadow-sm">
+        <div data-step="1" class="reveal-step shrink-0 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#112244] border border-amber-400 text-amber-300 font-montserrat font-bold text-[9px] sm:text-[10px] tracking-[0.18em] uppercase shadow-sm">
           <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
           <span>You Are Cordially Invited</span>
           <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
@@ -775,7 +782,7 @@
 
         <!-- 3. MAIN HEADING: INDIA ITME 2026 EXHIBITION - GREATER NOIDA -->
         <div data-step="2" class="reveal-step shrink-0 max-w-sm px-2">
-          <h1 class="text-lg sm:text-2xl font-black text-[#172554] tracking-tight leading-snug">
+          <h1 class="font-poppins font-semibold text-lg sm:text-2xl text-[#172554] tracking-tight leading-snug">
             India ITME 2026<br>
             Exhibition - Greater Noida
           </h1>
@@ -792,15 +799,15 @@
                 </svg>
               </div>
               <div>
-                <div class="text-[8px] sm:text-[9px] uppercase font-bold tracking-wider text-amber-300">Exhibition Pavilion &amp; Stall</div>
-                <div class="text-base sm:text-xl font-black text-white tracking-wide leading-tight">Hall 9 / H9G7</div>
+                <div class="font-montserrat font-bold text-[8px] sm:text-[9px] uppercase tracking-wider text-amber-300">Exhibition Pavilion &amp; Stall</div>
+                <div class="font-inter font-medium text-base sm:text-xl text-white tracking-wide leading-tight">Hall 9 / H9G7</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 5. DATE PILL BADGE ("December 4th to 9th, 2026") -->
-        <div data-step="4" class="reveal-step shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-amber-400 text-[11px] sm:text-xs font-black text-[#172554] shadow-sm">
+        <div data-step="4" class="reveal-step shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-amber-400 font-inter font-medium text-[11px] sm:text-xs text-[#172554] shadow-sm">
           <span class="w-4 h-4 rounded bg-[#e30613] text-white flex items-center justify-center shrink-0">
             <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -814,33 +821,31 @@
 
         <!-- 6. STREAMLINED PRODUCT SHOWCASE & 3D LAUNCHER (EXPANDED TO FILL BOTTOM SPACE) -->
         <div data-step="5" class="reveal-step shrink-0 w-full max-w-[310px] sm:max-w-sm mb-1">
-          <div class="rounded-2xl bg-white/95 p-3 sm:p-3.5 border-2 border-amber-300/80 shadow-md flex flex-col items-center">
+          <div id="productShowcaseCard" class="group rounded-2xl bg-white/95 hover:bg-white p-3 sm:p-3.5 border-2 border-amber-300/80 hover:border-amber-400 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col items-center cursor-pointer">
             
             <!-- Centered Title -->
             <div class="w-full flex items-center justify-center pb-1">
-              <span class="text-xs sm:text-sm font-black text-[#172554] tracking-tight">
+              <span class="font-poppins font-semibold text-xs sm:text-sm text-[#172554] tracking-tight group-hover:text-[#e30613] transition-colors">
                 Statex Vegam Testing System
               </span>
             </div>
 
             <!-- Product Photo (Enlarged Machine View Filling The Box) -->
             <div class="w-full h-44 sm:h-52 my-1.5 flex items-center justify-center bg-gradient-to-b from-white to-slate-50 rounded-xl border border-slate-100 overflow-hidden p-1.5">
-              <img src="statex_vegam_machine_tight.png" alt="Statex Vegam Testing System" class="h-full w-full max-h-44 sm:max-h-52 object-contain mx-auto transition-transform duration-300 hover:scale-105" onerror="this.src='statex_vegam_product.png';">
+              <img src="statex_vegam_machine_tight.png" alt="Statex Vegam Testing System" class="h-full w-full max-h-44 sm:max-h-52 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" onerror="this.src='statex_vegam_product.png';">
             </div>
 
             <!-- 360° 3D Model Launch Button inside product card -->
             <button id="open360Btn" type="button" class="w-full mt-2 inline-flex items-center justify-between p-1.5 rounded-xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] hover:opacity-95 text-white shadow-md border border-amber-400 transition active:scale-95 cursor-pointer">
               <div class="flex items-center gap-2 pl-3">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                </svg>
-                <span class="text-sm sm:text-base font-black tracking-wide text-white">360°</span>
+                <!-- Iconify: 360° Rotate Arrow -->
+                <iconify-icon icon="nrk:360" class="text-amber-400 text-lg sm:text-xl shrink-0"></iconify-icon>
+                <span class="font-montserrat font-extrabold text-sm sm:text-base tracking-wide text-white">360°</span>
               </div>
               <div class="h-6 w-px bg-white/20"></div>
-              <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#e30613] text-white text-[11px] sm:text-xs font-black shadow">
-                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                </svg>
+              <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#e30613] text-white font-montserrat font-bold text-[11px] sm:text-xs shadow">
+                <!-- Iconify: 3D Box/Cube -->
+                <iconify-icon icon="mdi:cube-scan" class="text-white text-sm sm:text-base shrink-0"></iconify-icon>
                 <span>3D MODEL</span>
               </div>
             </button>
@@ -861,7 +866,7 @@
       
       <!-- 1. POPUP HEADER: Model Name & Close Button Only -->
       <div class="flex items-center justify-between px-5 py-3.5 bg-[#172554] text-white border-b border-amber-400/30 z-10 shrink-0">
-        <h3 id="modal360Title" class="text-sm sm:text-base font-extrabold text-white tracking-wide">
+        <h3 id="modal360Title" class="font-poppins font-semibold text-sm sm:text-base text-white tracking-wide">
           Statex Vegam Testing System
         </h3>
 
@@ -881,6 +886,7 @@
           auto-rotate
           rotation-per-second="25deg"
           camera-controls
+          disable-pan
           touch-action="pan-y"
           shadow-intensity="2"
           shadow-softness="0.5"
@@ -897,7 +903,7 @@
               <!-- Center Statex Logo dot -->
               <div class="w-3 h-3 rounded-full bg-[#e30613] shadow-md animate-ping"></div>
             </div>
-            <p id="spinnerText" class="mt-4 text-xs font-bold uppercase tracking-widest text-amber-200">
+            <p id="spinnerText" class="mt-4 font-montserrat font-bold text-xs uppercase tracking-widest text-amber-200">
               Loading 3D Model...
             </p>
             <div class="w-36 h-1 bg-slate-800 rounded-full overflow-hidden mt-2.5">
@@ -910,11 +916,11 @@
 
       <!-- 3. CONTROLS BELOW 3D MODEL: Auto-Rotate and Reset Only -->
       <div class="px-5 py-3 bg-[#0a0f1d] border-t border-slate-800 flex items-center justify-center gap-3 z-10 shrink-0">
-        <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#1e293b] hover:bg-[#334155] text-amber-200 border border-amber-400/30 shadow-sm transition active:scale-95 cursor-pointer">
+        <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-inter font-medium text-xs bg-[#1e293b] hover:bg-[#334155] text-amber-200 border border-amber-400/30 shadow-sm transition active:scale-95 cursor-pointer">
           <span id="autoRotateDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
           <span>Auto-Rotate: ON</span>
         </button>
-        <button id="resetViewBtn" type="button" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#1e293b] hover:bg-[#334155] text-amber-200 border border-amber-400/30 shadow-sm transition active:scale-95 cursor-pointer">
+        <button id="resetViewBtn" type="button" class="px-4 py-2 rounded-xl font-inter font-medium text-xs bg-[#1e293b] hover:bg-[#334155] text-amber-200 border border-amber-400/30 shadow-sm transition active:scale-95 cursor-pointer">
           Reset
         </button>
       </div>
@@ -1049,7 +1055,7 @@
         revealTimers = [];
 
         revealSteps.forEach((stepEl, idx) => {
-          const delay = 500 + idx * 180;
+          const delay = 800 + idx * 200;
           const timer = setTimeout(() => {
             stepEl.classList.add('is-visible');
           }, delay);
@@ -1191,7 +1197,18 @@
         });
       }
 
-      open360Btn.addEventListener('click', open360Modal);
+      const productShowcaseCard = document.getElementById('productShowcaseCard');
+      if (productShowcaseCard) {
+        productShowcaseCard.addEventListener('click', (e) => {
+          // Open modal when any part of the card (image, title, container) is clicked
+          open360Modal();
+        });
+      }
+
+      open360Btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        open360Modal();
+      });
       close360Btn.addEventListener('click', close360Modal);
 
       modal360.addEventListener('click', (e) => {
