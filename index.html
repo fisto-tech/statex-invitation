@@ -862,23 +862,42 @@
   <!-- MODAL: CLEAN INTERACTIVE 3D VIEWER POPUP                   -->
   <!-- ========================================================= -->
   <div id="modal360" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-5 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal360Title">
-    <div class="relative w-full max-w-2xl h-[80vh] sm:h-[75vh] rounded-2xl bg-white border border-amber-300/40 shadow-2xl flex flex-col overflow-hidden">
+    <style>
+      #modal360Card {
+        background-image: url('popup_bg.jpg');
+      }
+      @media (orientation: portrait) {
+        #modal360Card {
+          background-image: url('popup_bg_portrait.jpg');
+        }
+      }
+    </style>
+    <div id="modal360Card" class="relative w-[95vw] sm:w-[92vw] max-w-5xl h-[78vh] sm:h-[76vh] lg:h-auto lg:aspect-[16/10] max-h-[90vh] rounded-2xl border-2 border-amber-400/70 shadow-2xl flex flex-col overflow-hidden bg-cover bg-center">
       
-      <!-- 1. POPUP HEADER: Model Name & Close Button Only -->
-      <div class="flex items-center justify-between px-5 py-3.5 bg-[#172554] text-white border-b border-amber-400/30 z-10 shrink-0">
-        <h3 id="modal360Title" class="font-poppins font-semibold text-sm sm:text-base text-white tracking-wide">
-          Statex Robotic-Unipack - 909
-        </h3>
+      <!-- 1. FLOATING HEADER: Model Name over Red Silk & Close Button -->
+      <div class="absolute top-0 left-0 right-0 flex items-start justify-between px-4 sm:px-6 pt-3 sm:pt-4 z-20 pointer-events-none">
+        <div class="pointer-events-auto pr-2">
+          <h3 id="modal360Title" class="font-poppins font-semibold text-xs sm:text-base text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.75)]">
+            Statex Robotic-Unipack – <span class="text-amber-300">909</span>
+          </h3>
+          <div class="h-0.5 w-24 sm:w-32 bg-gradient-to-r from-amber-300 to-transparent mt-1 rounded-full"></div>
+        </div>
 
-        <button id="close360Btn" type="button" aria-label="Close 3D Viewer" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#e30613] text-white flex items-center justify-center transition cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <button id="close360Btn" type="button" aria-label="Close 3D Viewer" class="pointer-events-auto shrink-0 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#991b1b] to-[#5c0a14] hover:from-[#e30613] hover:to-[#991b1b] text-white border border-amber-300/70 shadow-lg flex items-center justify-center transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
 
-      <!-- 2. 3D MODEL: Google Model Viewer Viewport (High-Contrast Luxury Dark Backdrop) -->
-      <div id="canvas3dContainer" class="relative flex-1 w-full h-full bg-[#0d1527] overflow-hidden select-none">
+      <!-- Subtle Drag to Rotate Hint -->
+      <div class="absolute top-12 sm:top-16 right-4 sm:right-6 z-10 pointer-events-none flex flex-col items-center text-[#5c3d1e]/80">
+        <iconify-icon icon="nrk:360" class="text-base sm:text-xl"></iconify-icon>
+        <span class="font-inter text-[9px] sm:text-[10px] font-medium tracking-wide">Drag to Rotate</span>
+      </div>
+
+      <!-- 2. 3D MODEL: Google Model Viewer Viewport (Transparent over Popup Background) -->
+      <div id="canvas3dContainer" class="relative flex-1 w-full h-full overflow-hidden select-none">
         <model-viewer
           id="statexModelViewer"
           src="statex-automation-model.glb"
@@ -890,23 +909,23 @@
           touch-action="pan-y"
           shadow-intensity="2"
           shadow-softness="0.5"
-          exposure="1.uto"
+          exposure="1.0"
           class="w-full h-full"
-          style="width: 100%; height: 100%; outline: none; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 60%, #090d16 100%);">
+          style="width: 100%; height: 100%; outline: none; background: transparent;">
           
           <!-- Centered Spinner Overlay until 3D Model is Loaded -->
-          <div id="model3dSpinner" slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-[#0d1527]/95 z-30 transition-opacity duration-500">
+          <div id="model3dSpinner" slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-[#fdf6e9]/85 backdrop-blur-sm z-30 transition-opacity duration-500">
             <!-- Dual Ring Spinners -->
             <div class="relative w-16 h-16 flex items-center justify-center">
-              <div class="absolute inset-0 rounded-full border-4 border-slate-700"></div>
+              <div class="absolute inset-0 rounded-full border-4 border-amber-200"></div>
               <div class="absolute inset-0 rounded-full border-4 border-t-[#e30613] border-r-[#f59e0b] border-b-transparent border-l-transparent animate-spin"></div>
               <!-- Center Statex Logo dot -->
               <div class="w-3 h-3 rounded-full bg-[#e30613] shadow-md animate-ping"></div>
             </div>
-            <p id="spinnerText" class="mt-4 font-montserrat font-bold text-xs uppercase tracking-widest text-amber-200">
+            <p id="spinnerText" class="mt-4 font-montserrat font-bold text-xs uppercase tracking-widest text-[#5c0a14]">
               Loading 3D Model...
             </p>
-            <div class="w-36 h-1 bg-slate-800 rounded-full overflow-hidden mt-2.5">
+            <div class="w-36 h-1 bg-amber-200/80 rounded-full overflow-hidden mt-2.5">
               <div id="spinnerProgressBar" class="h-full bg-gradient-to-r from-[#e30613] to-[#f59e0b] w-0 transition-all duration-200"></div>
             </div>
           </div>
@@ -914,15 +933,18 @@
         </model-viewer>
       </div>
 
-      <!-- 3. CONTROLS BELOW 3D MODEL: Auto-Rotate and Reset Only -->
-      <div class="px-5 py-3 bg-[#0a0f1d] border-t border-slate-800 flex items-center justify-center gap-3 z-10 shrink-0">
-        <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-inter font-medium text-xs bg-[#1e293b] hover:bg-[#334155] text-amber-200 border border-amber-400/30 shadow-sm transition active:scale-95 cursor-pointer">
-          <span id="autoRotateDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span>Auto-Rotate: ON</span>
-        </button>
-        <button id="resetViewBtn" type="button" class="px-4 py-2 rounded-xl font-inter font-medium text-xs bg-[#1e293b] hover:bg-[#334155] text-amber-200 border border-amber-400/30 shadow-sm transition active:scale-95 cursor-pointer">
-          Reset
-        </button>
+      <!-- 3. FLOATING PILL CONTROLS: Auto-Rotate and Reset -->
+      <div class="absolute bottom-3.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-max max-w-[92%]">
+        <div class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-amber-400/60 shadow-lg flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full font-inter font-medium text-[11px] sm:text-xs text-[#172554] hover:bg-amber-100/70 transition active:scale-95 cursor-pointer whitespace-nowrap">
+            <span id="autoRotateDot" class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+            <span>Auto-Rotate: ON</span>
+          </button>
+          <div class="h-4 w-px bg-amber-300/70 shrink-0"></div>
+          <button id="resetViewBtn" type="button" class="px-2.5 sm:px-3 py-1.5 rounded-full font-inter font-medium text-[11px] sm:text-xs text-[#172554] hover:bg-amber-100/70 transition active:scale-95 cursor-pointer whitespace-nowrap">
+            Reset
+          </button>
+        </div>
       </div>
 
     </div>
