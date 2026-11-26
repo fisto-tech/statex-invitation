@@ -74,7 +74,7 @@
       align-items: center;
       justify-content: center;
       gap: 18px;
-      background: radial-gradient(circle at 50% 35%, #2d401e 0%, #16220e 80%, #0d1408 100%);
+      background: radial-gradient(circle at 50% 35%, #566A39 0%, #3d4d28 80%, #2b371b 100%);
       transition: opacity 0.45s ease, visibility 0.45s ease;
     }
 
@@ -121,7 +121,7 @@
       max-width: 460px;
       height: 100dvh;
       max-height: 100dvh;
-      background: linear-gradient(180deg, #2d401e 0%, #263818 65%, #1f2f14 100%);
+      background: linear-gradient(180deg, #566A39 0%, #4b5d31 65%, #3f4f28 100%);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -158,12 +158,12 @@
       width: 50.15%;
       z-index: 20;
       cursor: pointer;
-      background: linear-gradient(180deg, #2d401e 0%, #263818 65%, #1f2f14 100%);
+      background: linear-gradient(180deg, #566A39 0%, #4b5d31 65%, #3f4f28 100%);
       box-shadow: none;
-      transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.5s ease 0.55s,
-                  box-shadow 0.3s ease,
-                  visibility 0s linear 1.05s;
+      transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.55s ease 0.95s,
+                  box-shadow 0.35s ease,
+                  visibility 0s linear 1.5s;
       visibility: visible;
       opacity: 1;
       transform: rotateY(0deg);
@@ -273,8 +273,8 @@
       height: 100%;
       z-index: 2;
       opacity: 0;
-      transform: scale(0.97);
-      transition: opacity 0.6s ease 0.2s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+      transform: scale(0.96);
+      transition: opacity 0.75s ease 0.45s, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
     }
 
     .scenes-container.revealed {
@@ -303,6 +303,28 @@
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0) scale(1);
+    }
+
+    .scene[data-scene="0"],
+    .scene[data-scene="1"] {
+      pointer-events: none !important;
+    }
+
+    .scene[data-scene="0"] {
+      padding-top: 86px;
+      padding-bottom: 112px;
+    }
+
+    .scene[data-scene="1"] {
+      padding-top: 38px;
+      padding-bottom: 84px;
+    }
+
+    .scene[data-scene="2"] {
+      justify-content: center;
+      gap: 28px;
+      padding-top: 24px;
+      padding-bottom: 72px;
     }
 
     /* Rounded white/off-white card with mint/sage border */
@@ -364,7 +386,7 @@
       align-items: center;
       justify-content: space-between;
       z-index: 10;
-      background: linear-gradient(180deg, rgba(31, 47, 20, 0) 0%, rgba(20, 31, 13, 0.92) 45%);
+      background: transparent;
     }
 
     .nav-btn {
@@ -467,14 +489,14 @@
 
         <div class="mt-2 seal-center-container">
           <button id="openSealBtn" class="seal-btn" type="button">
-            <span>Tap to Open Seal</span>
+            <span>Explore in 360° →</span>
           </button>
         </div>
       </section>
 
       <div class="scenes-container" id="scenesContainer">
         <!-- SHARED STATIC 360° 3D MODEL CARD (Visible on Page 1 & Page 2) -->
-        <div id="sharedModelCard" class="absolute left-[22px] right-[22px] top-[51%] -translate-y-1/2 z-10 transition-opacity duration-300">
+        <div id="sharedModelCard" class="absolute left-[22px] right-[22px] top-[49%] -translate-y-1/2 z-10 transition-opacity duration-300">
           <div class="showcase-card">
             <div class="model-box" id="modelSlot1">
               <model-viewer
@@ -492,7 +514,15 @@
                 interaction-prompt="auto">
               </model-viewer>
               <div id="modelLoader" class="absolute inset-0 flex items-center justify-center bg-[#f5f6f2]/80 text-[#223026] text-xs font-semibold tracking-wide pointer-events-none">
-                Loading 360° Model...
+                Loading Product...
+              </div>
+              <div class="absolute bottom-2.5 right-3 z-10 flex items-center gap-1.5">
+                <button id="autoRotateBtn" type="button" class="px-2.5 py-1.5 rounded-full bg-[#2b371b]/85 hover:bg-[#566A39] text-[#9fd09d] hover:text-white text-[11px] font-semibold tracking-wide border border-[#9fd09d]/40 backdrop-blur-sm transition cursor-pointer">
+                  Auto Rotate: On
+                </button>
+                <button id="resetViewBtn" type="button" class="px-3 py-1.5 rounded-full bg-[#2b371b]/85 hover:bg-[#566A39] text-[#9fd09d] hover:text-white text-[11px] font-semibold tracking-wide border border-[#9fd09d]/40 backdrop-blur-sm transition cursor-pointer">
+                  Reset View
+                </button>
               </div>
             </div>
           </div>
@@ -501,22 +531,22 @@
         <!-- INNER PAGE 1: Introducing Statex Unipack 909 (Text Only, Model is Shared) -->
         <section class="scene active pointer-events-none" data-scene="0" aria-label="Page 1: Introducing Unipack 909">
           <div class="w-full flex flex-col items-center">
-            <p class="font-montserrat font-bold text-sm tracking-widest text-sage-300 uppercase">
+            <p class="font-montserrat font-bold text-base tracking-widest text-sage-300 uppercase">
               INTRODUCING
             </p>
-            <h2 class="mt-1 font-montserrat font-extrabold text-2xl sm:text-[26px] tracking-wide text-white uppercase">
+            <h2 class="mt-1 font-montserrat font-extrabold text-[clamp(20px,6vw,30px)] whitespace-nowrap tracking-wide text-white uppercase">
               STATEX UNIPACK 909
             </h2>
-            <p class="mt-1 text-xs sm:text-sm text-white/90">
+            <p class="mt-1 text-sm sm:text-base text-white/90">
               Fully automatic cone yarn packing machine
             </p>
           </div>
 
           <div class="w-full flex flex-col items-center pb-2">
-            <p class="font-montserrat font-bold text-xs sm:text-sm tracking-wider text-white uppercase">
+            <p class="font-montserrat font-bold text-sm sm:text-base tracking-wider text-white uppercase">
               AUTOMATION &nbsp;•&nbsp; PRECISION &nbsp;•&nbsp; PRODUCTIVITY
             </p>
-            <p class="mt-1.5 text-xs sm:text-sm text-sage-300/95">
+            <p class="mt-1.5 text-sm sm:text-base text-sage-300/95">
               A smarter way to pack cone yarn
             </p>
           </div>
@@ -525,28 +555,28 @@
         <!-- INNER PAGE 2: Multiple Packing Solutions (Text Only, Model is Shared) -->
         <section class="scene pointer-events-none" data-scene="1" aria-label="Page 2: Multiple Packing Solutions">
           <div class="w-full flex flex-col items-center">
-            <h2 class="font-montserrat font-extrabold text-lg sm:text-xl leading-snug tracking-wide text-sage-300 uppercase">
+            <h2 class="font-montserrat font-extrabold text-xl sm:text-2xl leading-snug tracking-wide text-sage-300 uppercase">
               ONE MACHINE. MULTIPLE<br>PACKING SOLUTIONS.
             </h2>
-            <p class="mt-1 text-xs sm:text-sm text-white/90">
+            <p class="mt-1 text-sm sm:text-base text-white/90">
               Designed for flexibility and productivity
             </p>
-            <p class="mt-2 font-montserrat font-bold text-sm sm:text-base text-white">
+            <p class="mt-2 font-montserrat font-bold text-base sm:text-lg text-white">
               50 kg / 60 kg bags &amp; carton boxes
             </p>
-            <p class="mt-0.5 text-xs sm:text-sm font-semibold text-sage-300">
+            <p class="mt-0.5 text-sm sm:text-base font-semibold text-sage-300">
               — all in one machine —
             </p>
           </div>
 
           <div class="w-full flex flex-col items-center pb-1">
-            <p class="font-montserrat font-bold text-xs sm:text-sm tracking-wider text-sage-300 uppercase">
+            <p class="font-montserrat font-bold text-sm sm:text-base tracking-wider text-sage-300 uppercase">
               MECHANICAL SPEED OF PACKING
             </p>
-            <p class="mt-1 font-montserrat font-black text-xl sm:text-2xl text-white uppercase">
+            <p class="mt-1 font-montserrat font-black text-2xl sm:text-[26px] text-white uppercase">
               UP TO 1,500 BAGS PER DAY
             </p>
-            <p class="mt-1 text-xs text-white/90">
+            <p class="mt-1 text-sm text-white/90">
               High productivity. Flexible packing formats.
             </p>
           </div>
@@ -641,6 +671,32 @@
       const unipackModel = document.getElementById('unipackModel');
       const modelLoader = document.getElementById('modelLoader');
       const sharedModelCard = document.getElementById('sharedModelCard');
+      const resetViewBtn = document.getElementById('resetViewBtn');
+      const autoRotateBtn = document.getElementById('autoRotateBtn');
+
+      if (resetViewBtn) {
+        resetViewBtn.addEventListener('click', () => {
+          unipackModel.cameraTarget = 'auto auto auto';
+          unipackModel.cameraOrbit = 'auto auto 72%';
+          unipackModel.fieldOfView = '26deg';
+          if (typeof unipackModel.jumpCameraToGoal === 'function') {
+            unipackModel.jumpCameraToGoal();
+          }
+        });
+      }
+
+      if (autoRotateBtn) {
+        autoRotateBtn.addEventListener('click', () => {
+          const isRotating = unipackModel.hasAttribute('auto-rotate');
+          if (isRotating) {
+            unipackModel.removeAttribute('auto-rotate');
+            autoRotateBtn.textContent = 'Auto Rotate: Off';
+          } else {
+            unipackModel.setAttribute('auto-rotate', '');
+            autoRotateBtn.textContent = 'Auto Rotate: On';
+          }
+        });
+      }
       let current = 0;
       let isOpened = false;
       let modelBlobUrl = null;
