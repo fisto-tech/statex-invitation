@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>Statex® | Official VIP Invitation — India ITME 2026 (Hall 9 / H9G7)</title>
+  <title>Statex® | UNIPACK 909 — India ITME 2026 Invitation</title>
 
   <link rel="icon" type="image/png" href="statex-logo.png">
   <link rel="apple-touch-icon" href="statex-logo.png">
 
-  <!-- Google Fonts: Montserrat, Poppins, Inter -->
+  <!-- Google Fonts: Montserrat, Open Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Iconify Icon Web Component -->
-  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
   <!-- Google Model Viewer (Official Web Component for 3D GLB Models) -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
@@ -27,21 +24,23 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            sans: ['Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
             montserrat: ['Montserrat', 'sans-serif'],
-            poppins: ['Poppins', 'sans-serif'],
-            inter: ['Inter', 'sans-serif'],
+            opensans: ['Open Sans', 'sans-serif'],
           },
           colors: {
-            brand: {
-              red: '#e30613',
-              crimson: '#7b0817',
-              darkBurgundy: '#2d0208',
-              gold: '#c8963e',
-              goldLight: '#fbe8b5',
-              navy: '#172554',
-              teal: '#00bcba',
-            }
+            olive: {
+              950: '#1c2b12',
+              900: '#273a19',
+              800: '#2f431f',
+              700: '#395127',
+            },
+            sage: {
+              300: '#9fd09d',
+              400: '#88c386',
+              500: '#6bb069',
+            },
+            emeraldDeep: '#1b6d44',
           }
         }
       }
@@ -49,16 +48,6 @@
   </script>
 
   <style>
-    :root {
-      --font-main: 'Inter', sans-serif;
-      --font-title: 'Montserrat', sans-serif;
-      --font-heading: 'Poppins', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --color-gold: #c8963e;
-      --color-gold-bright: #ffd700;
-      --color-burgundy-dark: #220206;
-    }
-
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -68,1188 +57,677 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      max-width: 100vw;
       height: 100dvh;
-      max-height: 100dvh;
-      overflow: hidden !important;
-      position: fixed;
-      inset: 0;
-      touch-action: pan-y;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
+      background: #141f0d;
+      font-family: 'Open Sans', sans-serif;
+      color: #ffffff;
     }
 
-    body {
-      font-family: var(--font-main);
-      background-color: #1e0205;
-      color: #172554;
-      overflow: hidden !important;
+    /* Preloader */
+    #preloader {
       position: fixed;
       inset: 0;
+      z-index: 100;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      /* Deep luxury theatre atmosphere with soft ambient spotlight */
-      background: radial-gradient(circle at 50% 25%, #47060f 0%, #200206 55%, #0d0002 100%);
-      background-attachment: fixed;
+      justify-content: center;
+      gap: 18px;
+      background: radial-gradient(circle at 50% 35%, #2d401e 0%, #16220e 80%, #0d1408 100%);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
     }
 
-    /* Outer Stage Wrapper - strictly flush with top, no horizontal or vertical overflow */
-    .invitation-perspective-stage {
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .preloader-bar-track {
+      width: 180px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(159, 208, 157, 0.22);
+      overflow: hidden;
+    }
+
+    .preloader-bar-fill {
+      width: 45%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #75b973, #9fd09d);
+      animation: preloaderSlide 1.1s ease-in-out infinite;
+    }
+
+    @keyframes preloaderSlide {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(260%); }
+    }
+
+    .stage-wrapper {
       width: 100%;
-      max-width: 100%;
       height: 100dvh;
-      max-height: 100dvh;
-      margin: 0 auto;
-      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       perspective: 2400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow: hidden !important;
-      contain: paint;
+      background: radial-gradient(circle at 50% 30%, #2c401c 0%, #16220e 70%, #0d1408 100%);
     }
 
-    @media (min-width: 640px) {
-      .invitation-perspective-stage {
-        max-width: 500px;
-        justify-content: flex-start;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .invitation-perspective-stage {
-        max-width: 540px;
-        justify-content: flex-start;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .invitation-perspective-stage {
-        max-width: 560px;
-      }
-    }
-
-    /* Fixed Aspect Luxury Invitation Frame - strictly zero top gap and no overflow across all screens */
-    .envelope-master-frame {
+    .card-frame {
       position: relative;
-      top: 0;
-      margin-top: 0;
       width: 100%;
+      max-width: 460px;
       height: 100dvh;
       max-height: 100dvh;
-      border-radius: 0;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-      background: #110103;
-      overflow: hidden !important;
+      background: linear-gradient(180deg, #2d401e 0%, #263818 65%, #1f2f14 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      perspective: 1400px;
       transform-style: preserve-3d;
-      transition: height 0.8s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.8s ease;
-      contain: paint;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
     }
 
     @media (min-width: 640px) {
-      .envelope-master-frame {
-        height: 100dvh;
-        border-radius: 0;
-        box-shadow: 0 35px 85px -15px rgba(0, 0, 0, 0.85), 0 0 0 1.5px rgba(200, 150, 62, 0.4);
+      .card-frame {
+        height: min(94dvh, 840px);
+        border-radius: 24px;
+        border: 1px solid rgba(159, 208, 157, 0.2);
       }
     }
 
-    @media (min-width: 768px) {
-      .envelope-master-frame {
-        height: 100dvh;
-        border-radius: 0;
-      }
+    /* Subtle bottom wave accent matching the design */
+    .bottom-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 140px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.45;
     }
 
-    /* When open, the master frame stays exactly within 100dvh without scrolling */
-    .envelope-master-frame.is-open {
-      height: 100dvh !important;
-      max-height: 100dvh !important;
-      overflow: hidden !important;
-      background: transparent;
-      box-shadow: none;
-      contain: paint;
-    }
-
-    /* =========================================================================
-       CENTER-SPLIT DOORS (FEATURING LUXURY ENVELOPE ARTWORK)
-       ========================================================================= */
+    /* Center-Split 3D Doors (matching original main branch) */
     .center-split-door {
       position: absolute;
       top: 0;
       bottom: 0;
       width: 50.15%;
-      height: 100%;
-      z-index: 30;
-      overflow: hidden;
-      backface-visibility: hidden;
-      transform-style: preserve-3d;
+      z-index: 20;
       cursor: pointer;
-      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.45);
-      /* Smooth closing transition: doors swing shut smoothly and fade in gracefully */
-      transition: transform 0.85s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.4s ease, visibility 0s linear;
+      background: linear-gradient(180deg, #2d401e 0%, #263818 65%, #1f2f14 100%);
+      box-shadow: none;
+      transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.5s ease 0.55s,
+                  box-shadow 0.3s ease,
+                  visibility 0s linear 1.05s;
       visibility: visible;
       opacity: 1;
       transform: rotateY(0deg);
+      backface-visibility: hidden;
     }
 
-    /* LEFT DOOR */
     .center-split-left {
       left: 0;
       transform-origin: left center;
-      border-radius: 0;
-      border-right: none;
     }
 
-    .center-split-left .door-bg-pane {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      background-image: url('luxury_envelope_bg.webp');
-      background-size: 100% 100%;
-      background-position: left center;
-      background-repeat: no-repeat;
-    }
-
-    /* RIGHT DOOR */
     .center-split-right {
       right: 0;
       transform-origin: right center;
-      border-radius: 0;
-      border-left: none;
     }
 
-    .center-split-right .door-bg-pane {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 200%;
-      height: 100%;
-      background-image: url('luxury_envelope_bg.webp');
-      background-size: 100% 100%;
-      background-position: right center;
-      background-repeat: no-repeat;
-    }
-
-    /* OPEN CENTER SPLIT EFFECT */
-    .envelope-master-frame.is-open .center-split-left {
-      transform: rotateY(-110deg) translateX(-10px);
+    .card-frame.is-open .center-split-left {
+      transform: rotateY(-105deg) translateX(-12px);
+      box-shadow: 12px 0 35px rgba(0, 0, 0, 0.75), inset -2px 0 0 rgba(159, 208, 157, 0.45);
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
-      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease 0.9s, visibility 0s linear 1.8s;
     }
 
-    .envelope-master-frame.is-open .center-split-right {
-      transform: rotateY(110deg) translateX(10px);
+    .card-frame.is-open .center-split-right {
+      transform: rotateY(105deg) translateX(12px);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.75), inset 2px 0 0 rgba(159, 208, 157, 0.45);
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
-      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease 0.9s, visibility 0s linear 1.8s;
     }
 
-    /* Seam Shimmer Glow removed by default so center line does not show */
-    .center-split-door::after {
-      display: none;
-    }
-
-    /* =========================================================================
-       WAX SEAL BEACON & LIVE AURA (SITTING RIGHT AT 83.5% OF ARTWORK SEAL)
-       ========================================================================= */
-    .wax-seal-center-container {
-      position: absolute;
-      left: 50%;
-      top: 85.8%;
-      transform: translate(-50%, -50%);
-      z-index: 45;
-      pointer-events: auto;
-      /* When closing, seal appears after doors shut */
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s, opacity 0.5s ease 0.4s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 1;
-    }
-
-    .envelope-master-frame.is-open .wax-seal-center-container {
-      transform: translate(-50%, -50%) scale(0.6);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.4s ease, opacity 0.35s ease;
-    }
-
-    .wax-seal-btn {
-      position: relative;
-      width: 90px;
-      height: 90px;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      /* Fully opaque rich royal wax medallion completely covering background artwork */
-      background: radial-gradient(circle at 35% 30%, #ff2a3b 0%, #d80010 40%, #8e000c 80%, #520006 100%);
-      border: 3.5px solid #ffdc73;
-      box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.6),
-        0 0 35px rgba(255, 215, 0, 0.75),
-        inset 0 4px 8px rgba(255, 255, 255, 0.45),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.65);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-      animation: sealPulse 2.2s ease-in-out infinite, sealShine 4.5s ease-in-out infinite;
-    }
-
-    .wax-seal-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 
-        0 14px 40px rgba(0, 0, 0, 0.75),
-        0 0 45px rgba(255, 225, 90, 0.95),
-        inset 0 4px 10px rgba(255, 255, 255, 0.6),
-        inset 0 -6px 14px rgba(0, 0, 0, 0.7);
-    }
-
-    .wax-seal-btn:active {
-      transform: scale(0.95);
-    }
-
-    /* Inner embossed gold ring */
-    .seal-emboss-ring {
-      position: absolute;
-      inset: 6px;
-      border-radius: 9999px;
-      border: 1.5px dashed rgba(255, 220, 115, 0.75);
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
-      pointer-events: none;
-    }
-
-    .seal-pulse-ring {
-      position: absolute;
-      inset: -10px;
-      border-radius: 9999px;
-      border: 2px solid rgba(255, 215, 0, 0.7);
-      animation: ringExpand 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
-      pointer-events: none;
-    }
-
-    .seal-pulse-ring-2 {
-      position: absolute;
-      inset: -20px;
-      border-radius: 9999px;
-      border: 1.5px solid rgba(255, 180, 0, 0.45);
-      animation: ringExpand 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) 0.75s infinite;
-      pointer-events: none;
-    }
-
-    @keyframes ringExpand {
-      0% { transform: scale(0.7); opacity: 0.95; }
-      80% { transform: scale(1.4); opacity: 0; }
-      100% { transform: scale(1.55); opacity: 0; }
-    }
-
-    @keyframes sealPulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 
-          0 10px 30px rgba(0, 0, 0, 0.6),
-          0 0 25px rgba(255, 200, 50, 0.6),
-          inset 0 4px 8px rgba(255, 255, 255, 0.45),
-          inset 0 -6px 12px rgba(0, 0, 0, 0.65);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 
-          0 12px 35px rgba(0, 0, 0, 0.7),
-          0 0 42px rgba(255, 220, 80, 0.9),
-          inset 0 5px 10px rgba(255, 255, 255, 0.6),
-          inset 0 -6px 14px rgba(0, 0, 0, 0.7);
-      }
-    }
-
-    @keyframes sealShine {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.15) contrast(1.05); }
-    }
-
-    .seal-light-beam {
-      position: absolute;
-      bottom: 85%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 3px;
-      height: 75px;
-      background: linear-gradient(180deg, transparent, rgba(255, 220, 100, 0.8) 50%, rgba(255, 240, 180, 0.95) 100%);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      pointer-events: none;
-      animation: beamBreathe 2.4s ease-in-out infinite;
-    }
-
-    @keyframes beamBreathe {
-      0%, 100% { height: 60px; opacity: 0.6; }
-      50% { height: 90px; opacity: 1; box-shadow: 0 0 25px rgba(255, 230, 120, 0.95); }
-    }
-
-    /* Cover Headline Plaque on closed doors */
+    /* Cover Teaser Overlay on Closed Doors */
     .cover-teaser-plaque {
       position: absolute;
-      top: 13.5%;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 35;
-      pointer-events: none;
+      inset: 0;
+      z-index: 25;
+      padding: 28px 22px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 36px;
       text-align: center;
-      /* When closing, fade in only after doors have folded back in */
-      transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
       opacity: 1;
       transform: scale(1);
     }
 
-    .envelope-master-frame.is-open .cover-teaser-plaque {
+    .card-frame.is-open .cover-teaser-plaque {
       opacity: 0;
       transform: scale(0.92);
       pointer-events: none;
-      transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
-    .shimmer-card-effect {
-      position: relative;
-      overflow: hidden;
+    .seal-center-container {
+      pointer-events: auto;
+      transition: transform 0.4s ease, opacity 0.35s ease;
     }
 
-    .shimmer-card-effect::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 40%;
-      height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-      transform: rotate(25deg);
-      animation: ribbonShimmer 4.5s ease-in-out infinite;
+    .card-frame.is-open .seal-center-container {
+      transform: scale(0.6);
+      opacity: 0;
       pointer-events: none;
     }
 
-    @keyframes ribbonShimmer {
-      0% { left: -60%; }
-      30%, 100% { left: 160%; }
+    .seal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #9fd09d 0%, #75b973 100%);
+      color: #16220e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 0 0 rgba(159, 208, 157, 0.55);
+      cursor: pointer;
+      animation: sealPulse 2.2s infinite;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    /* =========================================================================
-       INSIDE INVITATION CARD (USING NEW USER BACKGROUND IMAGE EXACTLY)
-       ========================================================================= */
-    .inside-revealed-card {
+    .seal-btn:hover {
+      transform: scale(1.04);
+    }
+
+    .seal-btn:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes sealPulse {
+      0% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 0 0 rgba(159, 208, 157, 0.55); }
+      70% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 0 14px rgba(159, 208, 157, 0); }
+      100% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 0 0 rgba(159, 208, 157, 0); }
+    }
+
+    /* Scene transitions */
+    .scenes-container {
       position: relative;
+      flex: 1;
       width: 100%;
       height: 100%;
-      max-height: 100dvh;
-      background-image: url('inside_luxury_bg.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      border-radius: 0;
-      border: 1px solid rgba(200, 150, 62, 0.6);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-      overflow: hidden !important;
-      z-index: 10;
-    }
-
-    .envelope-master-frame.is-open .inside-revealed-card {
-      height: 100% !important;
-      max-height: 100dvh !important;
-      overflow: hidden !important;
-      box-shadow: 0 25px 70px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(200, 150, 62, 0.6);
-    }
-
-    /* Golden Hairline Frame inside Card */
-    .gold-foil-inner-border {
-      position: absolute;
-      inset: 6px;
-      border: 1px solid rgba(200, 150, 62, 0.4);
-      border-radius: 0;
-      pointer-events: none;
-    }
-
-    /* Staggered Reveal Elements inside the card */
-    .reveal-step {
+      z-index: 2;
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.97);
+      transition: opacity 0.6s ease 0.2s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
     }
 
-    .reveal-step.is-visible {
+    .scenes-container.revealed {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
 
-    #canvas3dContainer canvas {
-      touch-action: none;
-    }
-
-    .burst-particle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 60;
-      border-radius: 2px;
-      will-change: transform, opacity;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #c8963e;
-      border-radius: 9999px;
-    }
-
-    /* =========================================================================
-       LUXURY GOLDEN PRELOADER
-       ========================================================================= */
-    #invitationPreloader {
-      position: fixed;
+    .scene {
+      position: absolute;
       inset: 0;
-      z-index: 100;
-      background: radial-gradient(circle at 50% 38%, #fffaf0 0%, #fdf3d8 35%, #f7e2a9 65%, #ecd089 100%);
+      z-index: 20;
+      padding: 24px 22px 74px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      transition: opacity 0.85s cubic-bezier(0.25, 1, 0.35, 1), visibility 0.85s linear;
-      box-shadow: inset 0 0 100px rgba(184, 134, 11, 0.15);
-    }
-
-    /* Ambient luxury shimmer texture on golden preloader */
-    #invitationPreloader::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 248, 220, 0.15) 50%, transparent 80%);
-      pointer-events: none;
-    }
-
-    #invitationPreloader.is-hidden {
+      justify-content: space-between;
+      text-align: center;
       opacity: 0;
-      visibility: hidden;
       pointer-events: none;
+      transform: translateY(14px) scale(0.985);
+      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .preloader-glow-ring {
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      border-radius: 9999px;
-      border: 1.5px solid rgba(200, 150, 62, 0.45);
-      animation: preloaderPulse 2.4s ease-in-out infinite;
-    }
-
-    .preloader-glow-ring-2 {
-      position: absolute;
-      width: 175px;
-      height: 175px;
-      border-radius: 9999px;
-      border: 1.5px dashed rgba(184, 134, 11, 0.35);
-      animation: preloaderRotate 14s linear infinite;
-    }
-
-    @keyframes preloaderPulse {
-      0%, 100% {
-        transform: scale(0.94);
-        opacity: 0.5;
-        box-shadow: 0 0 20px rgba(218, 165, 32, 0.25);
-      }
-      50% {
-        transform: scale(1.06);
-        opacity: 1;
-        box-shadow: 0 0 40px rgba(230, 180, 50, 0.5);
-      }
-    }
-
-    @keyframes preloaderRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .preloader-bar-fill {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #c8963e, #e30613, #b8860b);
-      border-radius: 9999px;
-      box-shadow: 0 0 10px rgba(200, 150, 62, 0.6);
-      transition: width 0.15s ease-out;
-    }
-
-    /* =========================================================================
-       ANIMATED ENTRANCE FOR ENVELOPE COVER TEXT
-       ========================================================================= */
-    .cover-anim-item {
-      opacity: 0;
-      transform: translateY(22px) scale(0.96);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .cover-anim-item.animate-in {
+    .scene.active {
       opacity: 1;
+      pointer-events: auto;
       transform: translateY(0) scale(1);
     }
 
+    /* Rounded white/off-white card with mint/sage border */
+    .showcase-card {
+      width: 100%;
+      background: #f5f6f2;
+      border: 3px solid #88c386;
+      border-radius: 22px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .model-box {
+      width: 100%;
+      height: 310px;
+      background: radial-gradient(circle at 50% 45%, #fff8eb 0%, #f1e3c8 100%);
+      position: relative;
+    }
+
+    @media (max-height: 700px) {
+      .model-box {
+        height: 250px;
+      }
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+      --poster-color: transparent;
+    }
+
+    .badge-360 {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      background: rgba(31, 47, 20, 0.82);
+      color: #9fd09d;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 208, 157, 0.4);
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Navigation bar */
+    .nav-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+      background: linear-gradient(180deg, rgba(31, 47, 20, 0) 0%, rgba(20, 31, 13, 0.92) 45%);
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid rgba(159, 208, 157, 0.35);
+      background: rgba(45, 64, 30, 0.85);
+      color: #ffffff;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: #88c386;
+      color: #16220e;
+      border-color: #88c386;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(159, 208, 157, 0.35);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    .dot.active {
+      width: 24px;
+      background: #9fd09d;
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-start m-0 p-0 select-none antialiased overflow-x-hidden">
-
-  <!-- LUXURY STATE-OF-THE-ART PRELOADER: VIVID HIGH-CONTRAST STATEX LOGO & PROGRESS -->
-  <div id="invitationPreloader" aria-label="Loading Invitation">
-    <!-- Vivid Statex Red Capsule Badge with Maximum Contrast -->
-    <div class="mb-8 flex flex-col items-center z-10">
-      <div class="inline-flex items-center justify-center px-9 py-3.5 rounded-2xl bg-[#e30613] text-white shadow-[0_12px_35px_rgba(227,6,19,0.45),0_0_20px_rgba(255,215,0,0.4)] border-2 border-[#fff8d6]">
-        <span class="font-extrabold italic text-3xl sm:text-4xl tracking-tight leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Statex®</span>
-      </div>
-    </div>
-
-    <!-- Clear, Highly Visible Progress Bar & Bold Dark Percentage Text -->
-    <div class="flex flex-col items-center text-center px-4 z-10">
-      <div class="w-60 sm:w-68 h-3 bg-amber-950/15 rounded-full overflow-hidden border border-[#78350f]/60 shadow-inner p-0.5">
-        <div id="preloaderBarFill" class="preloader-bar-fill" style="width: 5%;"></div>
-      </div>
-
-      <span id="preloaderPercentText" class="text-sm sm:text-base font-black text-[#5c2405] tracking-widest mt-3.5 drop-shadow-sm">
-        5%
-      </span>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" aria-label="Loading invitation">
+    <img src="statex-logo-clean.png" alt="Statex" class="w-40 h-auto object-contain drop-shadow-lg">
+    <div class="preloader-bar-track">
+      <div class="preloader-bar-fill"></div>
     </div>
   </div>
 
-  <!-- MAIN INVITATION FRAME WITH CENTER-SPLIT DOORS -->
-  <main id="tiltMainStage" class="invitation-perspective-stage">
-    <div id="invitationEnvelope" class="envelope-master-frame">
+  <div class="stage-wrapper">
+    <main class="card-frame" id="invitationFrame">
+      <!-- Subtle decorative bottom waves -->
+      <svg class="bottom-wave" viewBox="0 0 460 140" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,65 C130,115 310,20 460,75 L460,140 L0,140 Z" fill="#3a5228" opacity="0.55"></path>
+        <path d="M0,95 C160,40 300,130 460,85 L460,140 L0,140 Z" fill="#466231" opacity="0.45"></path>
+      </svg>
 
-      <!-- ========================================================= -->
-      <!-- CENTER-SPLIT DOORS (CLOSED ENVELOPE FRONT)                -->
-      <!-- ========================================================= -->
-      <div id="centerSplitLeft" class="center-split-door center-split-left select-none">
-        <div class="door-bg-pane"></div>
-      </div>
+      <!-- CENTER-SPLIT DOORS (CLOSED ENVELOPE FRONT) -->
+      <div id="centerSplitLeft" class="center-split-door center-split-left" aria-hidden="true"></div>
+      <div id="centerSplitRight" class="center-split-door center-split-right" aria-hidden="true"></div>
 
-      <div id="centerSplitRight" class="center-split-door center-split-right select-none">
-        <div class="door-bg-pane"></div>
-      </div>
-
-      <!-- TEASER OVERLAY ON CLOSED DOORS (PIXEL PERFECT REPLICA WITH ANIMATED ENTRANCE) -->
-      <div id="coverTeaserPlaque" class="cover-teaser-plaque select-none px-4">
-        <!-- 1. STATEX RED CAPSULE BADGE -->
-        <div class="cover-anim-item inline-flex items-center justify-center px-7 py-2.5 rounded-2xl bg-[#e30613] text-white shadow-md">
-          <span class="font-extrabold italic text-2xl sm:text-3xl tracking-tight leading-none">Statex®</span>
-        </div>
-
-        <!-- 2. OFFICIAL EXHIBITION PASS WITH FLANKING GOLDEN HAIRLINES -->
-        <div class="cover-anim-item mt-4 flex items-center justify-center w-full max-w-[270px] sm:max-w-xs gap-3">
-          <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
-          <span class="font-montserrat font-bold text-[9px] sm:text-[10px] tracking-[0.22em] text-[#172554] uppercase whitespace-nowrap">
-            Official Exhibition Pass
-          </span>
-          <div class="flex-1 h-[1px] bg-[#c8963e]/80"></div>
-        </div>
-
-        <!-- 3. EXACT FLAME LOGO + "India ITME 2026 Exhibition" -->
-        <div class="cover-anim-item mt-4 flex items-center justify-center gap-3.5 w-full max-w-[280px] sm:max-w-sm">
-          <!-- Authentic Flame Emblem -->
-          <img src="itme_flame_logo.png" alt="India ITME Flame" class="w-11 sm:w-12 h-auto object-contain drop-shadow-sm shrink-0">
-
-          <!-- Left Golden Accent Bar beside Title -->
-          <div class="w-[2px] h-[72px] sm:h-20 bg-[#c8963e]/80 shrink-0"></div>
-
-          <!-- Exhibition Title Stack -->
-          <div class="text-left flex flex-col justify-center">
-            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#172554] tracking-tight leading-[1.05]">
-              India ITME
-            </div>
-            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#e30613] tracking-tight leading-[1.05] mt-0.5">
-              2026
-            </div>
-            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#172554] tracking-tight leading-[1.05] mt-0.5">
-              Exhibition
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. TWO-COLUMN DATE & VENUE / STALL INFO -->
-        <div class="cover-anim-item mt-5 w-full max-w-[270px] sm:max-w-[290px] flex items-center justify-center gap-4 text-left">
-          <!-- Left Column: 4-9 Dec 2026 -->
-          <div class="flex flex-col items-center justify-center min-w-[65px] shrink-0">
-            <div class="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#172554] tracking-tight leading-none">
-              4–9
-            </div>
-            <div class="font-montserrat font-bold text-[11px] sm:text-xs text-[#e30613] uppercase tracking-wide mt-1">
-              Dec 2026
-            </div>
+      <!-- COVER / SEAL OVERLAY (Scene 1) -->
+      <section class="cover-teaser-plaque" id="coverSealScreen" aria-label="Invitation Cover">
+        <div class="w-full flex flex-col items-center">
+          <div class="w-64 max-w-[78%] mb-8 drop-shadow-xl">
+            <img src="statex-logo-clean.png" alt="Statex Logo" class="w-full h-auto object-contain mx-auto">
           </div>
 
-          <!-- Vertical Divider Bar -->
-          <div class="w-[2px] h-11 bg-[#c8963e]/80 shrink-0"></div>
-
-          <!-- Right Column: Greater Noida / India Expo Mart & Stall Badge -->
-          <div class="flex flex-col items-start justify-center">
-            <div class="font-inter font-medium text-xs sm:text-[13px] text-[#172554] leading-tight">
-              Greater Noida
-            </div>
-            <div class="font-inter font-normal text-[10px] sm:text-[11px] text-slate-600 leading-tight mt-0.5">
-              India Expo Mart
-            </div>
-            <div class="mt-1 inline-flex items-center px-2.5 py-0.5 rounded-md bg-[#172554] text-amber-300 font-montserrat font-bold text-[10px] sm:text-[11px] tracking-wider uppercase shadow-sm">
-              Hall 9 / H9G7
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CENTER WAX SEAL (CLICK TO SPLIT OPEN) -->
-      <div class="wax-seal-center-container">
-        <div class="seal-light-beam"></div>
-        <button id="openSealBtn" type="button" aria-label="Open Invitation" class="wax-seal-btn group focus:outline-none">
-          <span class="seal-pulse-ring"></span>
-          <span class="seal-pulse-ring-2"></span>
-          <span class="seal-emboss-ring"></span>
-          <!-- Premium Gold Statex Monogram & Starburst Emblem -->
-          <svg class="w-10 h-10 text-amber-100 drop-shadow-lg group-hover:scale-110 transition-transform" viewBox="0 0 40 40" fill="none">
-            <!-- Center Starburst Crest -->
-            <path d="M20 4 L22.5 14 L32.5 12 L25 18.5 L30 27 L20.5 23 L14 31 L14.5 21 L5 18 L15 13.5 Z" fill="#fff2a8" opacity="0.3"></path>
-            <!-- Crossed Gold Stylized Needles -->
-            <line x1="11" y1="11" x2="29" y2="29" stroke="#fff8cf" stroke-width="2.5" stroke-linecap="round"></line>
-            <line x1="29" y1="11" x2="11" y2="29" stroke="#fff8cf" stroke-width="2.5" stroke-linecap="round"></line>
-            <circle cx="20" cy="20" r="4.5" fill="#ffe270" stroke="#7e0009" stroke-width="1.5"></circle>
-            <!-- Outer Gold Bead Accents -->
-            <circle cx="20" cy="8" r="1.5" fill="#fff5b8"></circle>
-            <circle cx="32" cy="20" r="1.5" fill="#fff5b8"></circle>
-            <circle cx="20" cy="32" r="1.5" fill="#fff5b8"></circle>
-            <circle cx="8" cy="20" r="1.5" fill="#fff5b8"></circle>
-          </svg>
-        </button>
-        <div class="text-center mt-3 pointer-events-none">
-          <div class="inline-flex items-center justify-center gap-3 w-64 sm:w-72 px-8 py-2.5 rounded-full bg-gradient-to-r from-[#1b0306]/95 via-[#3a060d]/95 to-[#1b0306]/95 border border-[#f5c358] text-[#ffe599] font-montserrat font-bold text-[11px] sm:text-[12px] tracking-[0.24em] uppercase shadow-[0_6px_20px_rgba(0,0,0,0.75),0_0_15px_rgba(245,195,88,0.4)] backdrop-blur-md">
-            <span class="drop-shadow-sm whitespace-nowrap">Tap Seal to Open</span>
-            <svg class="w-4 h-4 text-[#ffda6b] animate-bounce shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!-- INSIDE CARD: CLEAN SINGLE-VIEW LUXURY INVITATION (NO SCROLL) -->
-      <!-- ========================================================= -->
-      <div id="insideCard" class="inside-revealed-card px-3 pt-3.5 pb-4 sm:px-6 sm:pt-5 sm:pb-6 flex flex-col items-center justify-start text-center relative h-full w-full select-none gap-2.5 sm:gap-3">
-        
-        <!-- Double Gold Hairline Border -->
-        <div class="gold-foil-inner-border"></div>
-
-        <!-- INSIDE TOP BAR: Back Button Only -->
-        <div class="w-full flex items-center justify-end z-20 px-1 shrink-0 mb-0.5">
-          <button id="closeCardBtn" type="button" aria-label="Back to Envelope" title="Close invitation and fold envelope" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/60 hover:bg-[#e30613] text-amber-200 hover:text-white text-[10px] font-bold border border-amber-300/40 shadow-sm transition active:scale-95 cursor-pointer backdrop-blur-sm">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            <span>Back</span>
-          </button>
-        </div>
-
-        <!-- 1. STATEX RED PILL BADGE -->
-        <div class="shrink-0 flex flex-col items-center mt-0.5">
-          <div class="inline-flex items-center justify-center px-6 py-1.5 rounded-xl bg-[#e30613] text-white shadow-md">
-            <span class="font-extrabold italic text-xl sm:text-2xl tracking-tight leading-none">Statex®</span>
-          </div>
-        </div>
-
-        <!-- 2. "YOU ARE CORDIALLY INVITED" PILL BADGE -->
-        <div data-step="1" class="reveal-step shrink-0 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#112244] border border-amber-400 text-amber-300 font-montserrat font-bold text-[9px] sm:text-[10px] tracking-[0.18em] uppercase shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span>You Are Cordially Invited</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-        </div>
-
-        <!-- 3. MAIN HEADING: INDIA ITME 2026 EXHIBITION - GREATER NOIDA -->
-        <div data-step="2" class="reveal-step shrink-0 max-w-sm px-2">
-          <h1 class="font-poppins font-semibold text-lg sm:text-2xl text-[#172554] tracking-tight leading-snug">
-            India ITME 2026<br>
-            Exhibition - Greater Noida
+          <h1 class="font-montserrat font-extrabold text-2xl sm:text-[26px] tracking-wide text-white uppercase">
+            STATEX ENGINEERING
           </h1>
+          <p class="mt-2 text-sm sm:text-base text-white/90 font-normal">
+            invites you to witness a new innovation
+          </p>
         </div>
 
-        <!-- 4. EXHIBITION PAVILION & STALL CARD (HALL 9 / H9G7) -->
-        <div data-step="3" class="reveal-step shrink-0 w-full max-w-[280px] sm:max-w-xs">
-          <div class="rounded-xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#4c0d60] py-2 px-3 text-white shadow-md border border-amber-300/40 text-left">
-            <div class="flex items-center justify-center gap-3">
-              <div class="w-8 h-8 rounded-full bg-[#f59e0b] flex items-center justify-center text-[#172554] shrink-0 shadow-sm">
-                <!-- Location Pin SVG -->
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="font-montserrat font-bold text-[8px] sm:text-[9px] uppercase tracking-wider text-amber-300">Exhibition Pavilion &amp; Stall</div>
-                <div class="font-inter font-medium text-base sm:text-xl text-white tracking-wide leading-tight">Hall 9 / H9G7</div>
+        <div class="w-full flex flex-col items-center">
+          <p class="font-montserrat font-bold text-sm sm:text-base tracking-wider text-sage-300 uppercase">
+            NEW PRODUCT INTRODUCTION
+          </p>
+          <h2 class="mt-2 font-montserrat font-black text-3xl sm:text-4xl tracking-tight text-white uppercase">
+            UNIPACK 909
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-white/90 font-normal">
+            Fully automatic cone yarn packing machine
+          </p>
+        </div>
+
+        <div class="mt-2 seal-center-container">
+          <button id="openSealBtn" class="seal-btn" type="button">
+            <span>Tap to Open Seal</span>
+          </button>
+        </div>
+      </section>
+
+      <div class="scenes-container" id="scenesContainer">
+        <!-- SHARED STATIC 360° 3D MODEL CARD (Visible on Page 1 & Page 2) -->
+        <div id="sharedModelCard" class="absolute left-[22px] right-[22px] top-[51%] -translate-y-1/2 z-10 transition-opacity duration-300">
+          <div class="showcase-card">
+            <div class="model-box" id="modelSlot1">
+              <model-viewer
+                id="unipackModel"
+                alt="Statex Unipack 909 360-degree 3D Model"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="400"
+                rotation-per-second="20deg"
+                camera-orbit="auto auto 72%"
+                field-of-view="26deg"
+                shadow-intensity="0.6"
+                environment-image="neutral"
+                touch-action="pan-y"
+                interaction-prompt="auto">
+              </model-viewer>
+              <div id="modelLoader" class="absolute inset-0 flex items-center justify-center bg-[#f5f6f2]/80 text-[#223026] text-xs font-semibold tracking-wide pointer-events-none">
+                Loading 360° Model...
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 5. DATE PILL BADGE ("December 4th to 9th, 2026") -->
-        <div data-step="4" class="reveal-step shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-amber-400 font-inter font-medium text-[11px] sm:text-xs text-[#172554] shadow-sm">
-          <span class="w-4 h-4 rounded bg-[#e30613] text-white flex items-center justify-center shrink-0">
-            <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-          </span>
-          <span>December 4th to 9th, 2026</span>
-        </div>
-
-        <!-- 6. STREAMLINED PRODUCT SHOWCASE & 3D LAUNCHER (EXPANDED TO FILL BOTTOM SPACE) -->
-        <div data-step="5" class="reveal-step shrink-0 w-full max-w-[310px] sm:max-w-sm mb-1">
-          <div id="productShowcaseCard" class="group rounded-2xl bg-white/95 hover:bg-white p-3 sm:p-3.5 border-2 border-amber-300/80 hover:border-amber-400 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col items-center cursor-pointer">
-            
-            <!-- Centered Title -->
-            <div class="w-full flex items-center justify-center pb-1">
-              <span class="font-poppins font-semibold text-xs sm:text-sm text-[#172554] tracking-tight group-hover:text-[#e30613] transition-colors">
-                Statex Robotic-Unipack - 909
-              </span>
-            </div>
-
-            <!-- Product Photo (Enlarged Machine View Filling The Box) -->
-            <div class="w-full h-44 sm:h-52 my-1.5 flex items-center justify-center bg-gradient-to-b from-white to-slate-50 rounded-xl border border-slate-100 overflow-hidden p-1.5">
-              <img src="statex-product-image.webp" alt="Statex Robotic-Unipack - 909" class="h-full w-full max-h-44 sm:max-h-52 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" onerror="this.src='statex_vegam_product.png';">
-            </div>
-
-            <!-- 360° 3D Model Launch Button inside product card -->
-            <button id="open360Btn" type="button" class="w-full mt-2 inline-flex items-center justify-between p-1.5 rounded-xl bg-gradient-to-r from-[#172554] via-[#1c2e68] to-[#6d138a] hover:opacity-95 text-white shadow-md border border-amber-400 transition active:scale-95 cursor-pointer">
-              <div class="flex items-center gap-2 pl-3">
-                <!-- Iconify: 360° Rotate Arrow -->
-                <iconify-icon icon="nrk:360" class="text-amber-400 text-lg sm:text-xl shrink-0"></iconify-icon>
-                <span class="font-montserrat font-extrabold text-sm sm:text-base tracking-wide text-white">360°</span>
-              </div>
-              <div class="h-6 w-px bg-white/20"></div>
-              <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#e30613] text-white font-montserrat font-bold text-[11px] sm:text-xs shadow">
-                <!-- Iconify: 3D Box/Cube -->
-                <iconify-icon icon="mdi:cube-scan" class="text-white text-sm sm:text-base shrink-0"></iconify-icon>
-                <span>3D MODEL</span>
-              </div>
-            </button>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </main>
-
-  <!-- ========================================================= -->
-  <!-- MODAL: CLEAN INTERACTIVE 3D VIEWER POPUP                   -->
-  <!-- ========================================================= -->
-  <div id="modal360" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-5 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modal360Title">
-    <style>
-      #modal360Card {
-        background-image: url('popup_bg.jpg');
-      }
-      @media (orientation: portrait) {
-        #modal360Card {
-          background-image: url('popup_bg_portrait.jpg');
-        }
-      }
-    </style>
-    <div id="modal360Card" class="relative w-[95vw] sm:w-[92vw] max-w-5xl h-[78vh] sm:h-[76vh] lg:h-auto lg:aspect-[16/10] max-h-[90vh] rounded-2xl border-2 border-amber-400/70 shadow-2xl flex flex-col overflow-hidden bg-cover bg-center">
-      
-      <!-- 1. FLOATING HEADER: Model Name over Red Silk & Close Button -->
-      <div class="absolute top-0 left-0 right-0 flex items-start justify-between px-4 sm:px-6 pt-3 sm:pt-4 z-20 pointer-events-none">
-        <div class="pointer-events-auto pr-2">
-          <h3 id="modal360Title" class="font-poppins font-semibold text-xs sm:text-base text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.75)]">
-            Statex Robotic-Unipack – <span class="text-amber-300">909</span>
-          </h3>
-          <div class="h-0.5 w-24 sm:w-32 bg-gradient-to-r from-amber-300 to-transparent mt-1 rounded-full"></div>
-        </div>
-
-        <button id="close360Btn" type="button" aria-label="Close 3D Viewer" class="pointer-events-auto shrink-0 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#991b1b] to-[#5c0a14] hover:from-[#e30613] hover:to-[#991b1b] text-white border border-amber-300/70 shadow-lg flex items-center justify-center transition cursor-pointer">
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Subtle Drag to Rotate Hint -->
-      <div class="absolute top-12 sm:top-16 right-4 sm:right-6 z-10 pointer-events-none flex flex-col items-center text-[#5c3d1e]/80">
-        <iconify-icon icon="nrk:360" class="text-base sm:text-xl"></iconify-icon>
-        <span class="font-inter text-[9px] sm:text-[10px] font-medium tracking-wide">Drag to Rotate</span>
-      </div>
-
-      <!-- 2. 3D MODEL: Google Model Viewer Viewport (Transparent over Popup Background) -->
-      <div id="canvas3dContainer" class="relative flex-1 w-full h-full overflow-hidden select-none">
-        <model-viewer
-          id="statexModelViewer"
-          src="statex-automation-model.glb"
-          alt="Statex Robotic-Unipack - 909 3D Model"
-          auto-rotate
-          rotation-per-second="25deg"
-          camera-controls
-          touch-action="pan-y"
-          shadow-intensity="2"
-          shadow-softness="0.5"
-          exposure="1.0"
-          class="w-full h-full"
-          style="width: 100%; height: 100%; outline: none; background: transparent;">
-          
-          <!-- Centered Spinner Overlay until 3D Model is Loaded -->
-          <div id="model3dSpinner" slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-[#fdf6e9]/85 backdrop-blur-sm z-30 transition-opacity duration-500">
-            <!-- Dual Ring Spinners -->
-            <div class="relative w-16 h-16 flex items-center justify-center">
-              <div class="absolute inset-0 rounded-full border-4 border-amber-200"></div>
-              <div class="absolute inset-0 rounded-full border-4 border-t-[#e30613] border-r-[#f59e0b] border-b-transparent border-l-transparent animate-spin"></div>
-              <!-- Center Statex Logo dot -->
-              <div class="w-3 h-3 rounded-full bg-[#e30613] shadow-md animate-ping"></div>
-            </div>
-            <p id="spinnerText" class="mt-4 font-montserrat font-bold text-xs uppercase tracking-widest text-[#5c0a14]">
-              Loading 3D Model...
+        <!-- INNER PAGE 1: Introducing Statex Unipack 909 (Text Only, Model is Shared) -->
+        <section class="scene active pointer-events-none" data-scene="0" aria-label="Page 1: Introducing Unipack 909">
+          <div class="w-full flex flex-col items-center">
+            <p class="font-montserrat font-bold text-sm tracking-widest text-sage-300 uppercase">
+              INTRODUCING
             </p>
-            <div class="w-36 h-1 bg-amber-200/80 rounded-full overflow-hidden mt-2.5">
-              <div id="spinnerProgressBar" class="h-full bg-gradient-to-r from-[#e30613] to-[#f59e0b] w-0 transition-all duration-200"></div>
+            <h2 class="mt-1 font-montserrat font-extrabold text-2xl sm:text-[26px] tracking-wide text-white uppercase">
+              STATEX UNIPACK 909
+            </h2>
+            <p class="mt-1 text-xs sm:text-sm text-white/90">
+              Fully automatic cone yarn packing machine
+            </p>
+          </div>
+
+          <div class="w-full flex flex-col items-center pb-2">
+            <p class="font-montserrat font-bold text-xs sm:text-sm tracking-wider text-white uppercase">
+              AUTOMATION &nbsp;•&nbsp; PRECISION &nbsp;•&nbsp; PRODUCTIVITY
+            </p>
+            <p class="mt-1.5 text-xs sm:text-sm text-sage-300/95">
+              A smarter way to pack cone yarn
+            </p>
+          </div>
+        </section>
+
+        <!-- INNER PAGE 2: Multiple Packing Solutions (Text Only, Model is Shared) -->
+        <section class="scene pointer-events-none" data-scene="1" aria-label="Page 2: Multiple Packing Solutions">
+          <div class="w-full flex flex-col items-center">
+            <h2 class="font-montserrat font-extrabold text-lg sm:text-xl leading-snug tracking-wide text-sage-300 uppercase">
+              ONE MACHINE. MULTIPLE<br>PACKING SOLUTIONS.
+            </h2>
+            <p class="mt-1 text-xs sm:text-sm text-white/90">
+              Designed for flexibility and productivity
+            </p>
+            <p class="mt-2 font-montserrat font-bold text-sm sm:text-base text-white">
+              50 kg / 60 kg bags &amp; carton boxes
+            </p>
+            <p class="mt-0.5 text-xs sm:text-sm font-semibold text-sage-300">
+              — all in one machine —
+            </p>
+          </div>
+
+          <div class="w-full flex flex-col items-center pb-1">
+            <p class="font-montserrat font-bold text-xs sm:text-sm tracking-wider text-sage-300 uppercase">
+              MECHANICAL SPEED OF PACKING
+            </p>
+            <p class="mt-1 font-montserrat font-black text-xl sm:text-2xl text-white uppercase">
+              UP TO 1,500 BAGS PER DAY
+            </p>
+            <p class="mt-1 text-xs text-white/90">
+              High productivity. Flexible packing formats.
+            </p>
+          </div>
+        </section>
+
+        <!-- INNER PAGE 3: Final Scene — India ITME 2026 Invitation -->
+        <section class="scene" data-scene="2" aria-label="Page 3: India ITME 2026">
+          <div class="w-full flex flex-col items-center pt-1">
+            <p class="font-montserrat font-bold text-sm tracking-widest text-sage-300 uppercase">
+              MEET US AT
+            </p>
+            <h2 class="mt-1 font-montserrat font-black text-2xl sm:text-[28px] tracking-wide text-white uppercase">
+              INDIA ITME 2026
+            </h2>
+          </div>
+
+          <div class="showcase-card px-5 py-7 sm:py-8 my-3 flex flex-col items-center justify-center text-center">
+            <h3 class="font-montserrat font-extrabold text-xl sm:text-2xl text-[#223026] tracking-wide uppercase">
+              INDIA ITME 2026
+            </h3>
+            <p class="mt-0.5 font-montserrat font-extrabold text-base sm:text-lg text-emeraldDeep uppercase tracking-wider">
+              EXHIBITION
+            </p>
+
+            <div class="mt-5">
+              <p class="font-montserrat font-extrabold text-lg sm:text-xl text-[#223026] uppercase">
+                4–9 DECEMBER 2026
+              </p>
+              <p class="mt-1 font-montserrat font-bold text-xs sm:text-sm text-[#223026] tracking-wider uppercase">
+                GREATER NOIDA &nbsp;•&nbsp; INDIA
+              </p>
+            </div>
+
+            <div class="mt-5">
+              <p class="font-montserrat font-extrabold text-xl sm:text-2xl text-emeraldDeep uppercase tracking-wide">
+                HALL 9 &nbsp;•&nbsp; H9G7
+              </p>
+              <p class="mt-1 font-montserrat font-bold text-xs sm:text-sm text-[#223026] tracking-wider uppercase">
+                INDIA EXPO MART
+              </p>
             </div>
           </div>
 
-        </model-viewer>
+          <div class="w-full flex flex-col items-center pb-2">
+            <p class="font-montserrat font-bold text-sm sm:text-base text-white">
+              We look forward to welcoming you!
+            </p>
+            <p class="mt-3 text-xs text-white/80">By</p>
+            <p class="mt-0.5 font-montserrat font-extrabold text-sm sm:text-base text-white tracking-wide uppercase">
+              K. SUBRAMANIAM M.D.
+            </p>
+            <p class="mt-0.5 text-xs sm:text-sm font-semibold text-sage-300">
+              Statex Group of Companies
+            </p>
+          </div>
+        </section>
       </div>
 
-      <!-- 3. FLOATING PILL CONTROLS: Auto-Rotate and Reset -->
-      <div class="absolute bottom-3.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-max max-w-[92%]">
-        <div class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-amber-400/60 shadow-lg flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
-          <button id="toggleAutoRotateBtn" type="button" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full font-inter font-medium text-[11px] sm:text-xs text-[#172554] hover:bg-amber-100/70 transition active:scale-95 cursor-pointer whitespace-nowrap">
-            <span id="autoRotateDot" class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-            <span>Auto-Rotate: ON</span>
-          </button>
-          <div class="h-4 w-px bg-amber-300/70 shrink-0"></div>
-          <button id="resetViewBtn" type="button" class="px-2.5 sm:px-3 py-1.5 rounded-full font-inter font-medium text-[11px] sm:text-xs text-[#172554] hover:bg-amber-100/70 transition active:scale-95 cursor-pointer whitespace-nowrap">
-            Reset
-          </button>
-        </div>
-      </div>
+      <!-- Bottom Navigation Controls (3 Inner Pages) -->
+      <nav class="nav-bar" aria-label="Scene navigation">
+        <button id="prevBtn" class="nav-btn" type="button" disabled aria-label="Previous page">
+          ← Prev
+        </button>
 
-    </div>
+        <button id="nextBtn" class="nav-btn" type="button" aria-label="Next page">
+          Next →
+        </button>
+      </nav>
+    </main>
   </div>
 
-  <!-- SCRIPT -->
   <script>
     (function () {
-      const preloader = document.getElementById('invitationPreloader');
-      const preloaderBarFill = document.getElementById('preloaderBarFill');
-      const preloaderPercentText = document.getElementById('preloaderPercentText');
-      const coverAnimItems = Array.from(document.querySelectorAll('.cover-anim-item'));
-
-      // Smooth progress counter from 0 to 100%
-      let progressPercent = 0;
-      let hasFinished = false;
-      const progressInterval = setInterval(() => {
-        if (!hasFinished && progressPercent < 90) {
-          progressPercent += Math.floor(Math.random() * 6) + 3;
-          if (progressPercent > 90) progressPercent = 90;
-          if (preloaderBarFill) preloaderBarFill.style.width = progressPercent + '%';
-          if (preloaderPercentText) preloaderPercentText.textContent = progressPercent + '%';
-        }
-      }, 80);
-
-      // Dismiss preloader and trigger animated entrance of envelope text
-      function triggerEnvelopeEntrance() {
-        coverAnimItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.add('animate-in');
-          }, 200 + index * 180);
-        });
-      }
-
-      function dismissPreloader() {
-        if (!preloader || hasFinished) return;
-        hasFinished = true;
-        clearInterval(progressInterval);
-        
-        // Ensure user clearly sees 100% before fading out
-        if (preloaderBarFill) preloaderBarFill.style.width = '100%';
-        if (preloaderPercentText) preloaderPercentText.textContent = '100%';
-
-        setTimeout(() => {
-          preloader.classList.add('is-hidden');
-          setTimeout(() => {
-            triggerEnvelopeEntrance();
-            try { preloader.remove(); } catch (e) {}
-          }, 850);
-        }, 600);
-      }
-
-      // Allow preloader to show clearly for at least 1.6s so Statex logo & progress are visible
-      setTimeout(dismissPreloader, 1600);
-
-      const envelope = document.getElementById('invitationEnvelope');
-      const insideCard = document.getElementById('insideCard');
-      const openSealBtn = document.getElementById('openSealBtn');
-      const centerSplitLeft = document.getElementById('centerSplitLeft');
-      const centerSplitRight = document.getElementById('centerSplitRight');
-      const closeCardBtn = document.getElementById('closeCardBtn');
-      // topControls removed (back button moved inside envelope)
-      // boothCopyCard removed
-      // boothBadgeText removed
-      const revealSteps = Array.from(document.querySelectorAll('.reveal-step'));
-
-      const open360Btn = document.getElementById('open360Btn');
-      const modal360 = document.getElementById('modal360');
-      const close360Btn = document.getElementById('close360Btn');
-      const canvasContainer = document.getElementById('canvas3dContainer');
-      const toggleAutoRotateBtn = document.getElementById('toggleAutoRotateBtn');
-      const autoRotateDot = document.getElementById('autoRotateDot');
-      const resetViewBtn = document.getElementById('resetViewBtn');
-      const presetBtns = Array.from(document.querySelectorAll('.preset-btn'));
-
-      // hotspot elements removed
-
-      let isCardOpen = false;
-      let revealTimers = [];
-
-      // Confetti burst on opening
-      function spawnCelebrationBurst() {
-        const rect = openSealBtn.getBoundingClientRect();
-        const originX = rect.left + rect.width / 2;
-        const originY = rect.top + rect.height / 2;
-        const colors = ['#e30613', '#ffd700', '#ff6b35', '#ffffff', '#7b0817'];
-
-        for (let i = 0; i < 32; i++) {
-          const p = document.createElement('span');
-          p.className = 'burst-particle';
-          const size = 5 + Math.random() * 6;
-          p.style.width = size + 'px';
-          p.style.height = (Math.random() > 0.5 ? size : size * 0.6) + 'px';
-          p.style.left = originX + 'px';
-          p.style.top = originY + 'px';
-          p.style.backgroundColor = colors[i % colors.length];
-          document.body.appendChild(p);
-
-          const angle = (Math.PI * 2 * i) / 32 + (Math.random() - 0.5) * 0.3;
-          const velocity = 85 + Math.random() * 180;
-          const dx = Math.cos(angle) * velocity;
-          const dy = Math.sin(angle) * velocity - 40;
-          const rot = (Math.random() - 0.5) * 500;
-
-          p.animate(
-            [
-              { transform: 'translate(-50%, -50%) scale(0.4)', opacity: 1 },
-              { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(1.1) rotate(${rot}deg)`, opacity: 0.95, offset: 0.65 },
-              { transform: `translate(calc(-50% + ${dx * 1.15}px), calc(-50% + ${dy + 90}px)) scale(0.4) rotate(${rot * 1.3}deg)`, opacity: 0 }
-            ],
-            { duration: 1100 + Math.random() * 400, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
-          ).onfinish = () => p.remove();
-        }
-      }
-
-      // Booth Location Info
-
-      // Open Invitation Card (Center Split Doors open from middle)
-      function openInvitationCard() {
-        if (isCardOpen) return;
-        isCardOpen = true;
-
-        spawnCelebrationBurst();
-        envelope.classList.add('is-open');
-
-        // topControls opened
-        
-
-        revealTimers.forEach(t => clearTimeout(t));
-        revealTimers = [];
-
-        revealSteps.forEach((stepEl, idx) => {
-          const delay = 800 + idx * 200;
-          const timer = setTimeout(() => {
-            stepEl.classList.add('is-visible');
-          }, delay);
-          revealTimers.push(timer);
-        });
-
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 300);
-      }
-
-      // Close Invitation Card (Smooth envelope folding sequence)
-      function closeInvitationCard() {
-        if (!isCardOpen) return;
-        isCardOpen = false;
-
-        revealTimers.forEach(t => clearTimeout(t));
-        revealTimers = [];
-
-        // Scroll back to top immediately so closing is framed properly
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // Fade out inside content immediately to prevent visual ghosting
-        revealSteps.forEach(stepEl => stepEl.classList.remove('is-visible'));
-
-        // Close the doors smoothly
-        envelope.classList.remove('is-open');
-      }
-
-      openSealBtn.addEventListener('click', openInvitationCard);
-      centerSplitLeft.addEventListener('click', openInvitationCard);
-      centerSplitRight.addEventListener('click', openInvitationCard);
-      closeCardBtn.addEventListener('click', closeInvitationCard);
-      // boothCopyCard listener removed
-
-      // GOOGLE MODEL VIEWER INTEGRATION
-      const modelViewer = document.getElementById('statexModelViewer');
-      const model3dSpinner = document.getElementById('model3dSpinner');
-      const spinnerText = document.getElementById('spinnerText');
-      const spinnerProgressBar = document.getElementById('spinnerProgressBar');
-      let autoRotateActive = true;
-
-      if (modelViewer) {
-        modelViewer.addEventListener('progress', (e) => {
-          const percent = Math.round(e.detail.totalProgress * 100);
-          if (spinnerProgressBar) spinnerProgressBar.style.width = percent + '%';
-          if (spinnerText) spinnerText.textContent = `Loading 3D Model (${percent}%)...`;
-        });
-
-        modelViewer.addEventListener('load', () => {
-          if (model3dSpinner) {
-            model3dSpinner.classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(() => model3dSpinner.style.display = 'none', 500);
-          }
-        });
-
-        modelViewer.addEventListener('error', (err) => {
-          console.error('Model Viewer error:', err);
-          if (spinnerText) spinnerText.textContent = 'Please view via local web server (http://localhost)';
-        });
-      }
-
-      function updateAutoRotateUI() {
-        const label = toggleAutoRotateBtn.querySelector('span:last-child');
-        if (autoRotateActive) {
-          modelViewer.setAttribute('auto-rotate', '');
-          label.textContent = 'Auto-Rotate: ON';
-          autoRotateDot.className = 'w-2 h-2 rounded-full bg-emerald-500';
-        } else {
-          modelViewer.removeAttribute('auto-rotate');
-          label.textContent = 'Auto-Rotate: OFF';
-          autoRotateDot.className = 'w-2 h-2 rounded-full bg-slate-400';
-        }
-      }
-
-      function open360Modal() {
-        modal360.classList.remove('hidden');
-        modal360.classList.add('flex');
-        autoRotateActive = true;
-        updateAutoRotateUI();
-
-        requestAnimationFrame(() => {
-          modal360.classList.remove('opacity-0');
-          modal360.classList.add('opacity-100');
-        });
-      }
-
-      function close360Modal() {
-        modal360.classList.remove('opacity-100');
-        modal360.classList.add('opacity-0');
-        setTimeout(() => {
-          modal360.classList.add('hidden');
-          modal360.classList.remove('flex');
-        }, 300);
-      }
-
-      // Camera Presets for Google Model Viewer
-      const VIEW_PRESETS = {
-        overview: {
-          orbit: '45deg 75deg 105%',
-          target: 'auto auto auto',
-          tag: 'Full Console',
-          heading: 'Statex Robotic-Unipack - 909',
-          desc: 'High-Volume Cotton Fiber Testing Console with Length, Strength & Color modules.'
-        },
-        hood: {
-          orbit: '15deg 80deg 75%',
-          target: 'auto auto auto',
-          tag: 'Testing Chamber',
-          heading: 'Length, Strength & Color Module',
-          desc: 'Automated testing compartment with precision optical and mechanical sensors.'
-        },
-        operator: {
-          orbit: '-45deg 70deg 85%',
-          target: 'auto auto auto',
-          tag: 'Operator Console',
-          heading: 'Vegam Touchscreen Workstation',
-          desc: 'Integrated control terminal and sample preparation workspace.'
+      const preloader = document.getElementById('preloader');
+      const hidePreloader = () => {
+        if (preloader && !preloader.classList.contains('hidden')) {
+          preloader.classList.add('hidden');
         }
       };
+      window.addEventListener('load', hidePreloader);
+      setTimeout(hidePreloader, 2500);
 
-      function applyPreset(key) {
-        const preset = VIEW_PRESETS[key];
-        if (!preset || !modelViewer) return;
+      const frame = document.getElementById('invitationFrame');
+      const openSealBtn = document.getElementById('openSealBtn');
+      const leftDoor = document.getElementById('centerSplitLeft');
+      const rightDoor = document.getElementById('centerSplitRight');
+      const scenesContainer = document.getElementById('scenesContainer');
+      const scenes = Array.from(document.querySelectorAll('.scene'));
+      const dots = Array.from(document.querySelectorAll('.dot'));
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const unipackModel = document.getElementById('unipackModel');
+      const modelLoader = document.getElementById('modelLoader');
+      const sharedModelCard = document.getElementById('sharedModelCard');
+      let current = 0;
+      let isOpened = false;
+      let modelBlobUrl = null;
+      let modelFetchStarted = false;
 
-        modelViewer.cameraOrbit = preset.orbit;
-        modelViewer.cameraTarget = preset.target;
+      unipackModel.addEventListener('load', () => {
+        if (modelLoader) modelLoader.style.display = 'none';
+      });
 
-        hotspotTag.textContent = preset.tag;
-        hotspotHeading.textContent = preset.heading;
-        hotspotDesc.textContent = preset.desc;
-
-        presetBtns.forEach(btn => {
-          if (btn.dataset.preset === key) {
-            btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#172554] text-white border border-[#172554] shadow-sm transition cursor-pointer';
-          } else {
-            btn.className = 'preset-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-[#172554] border border-slate-300 transition cursor-pointer';
-          }
-        });
+      function startBackgroundModelFetch() {
+        if (modelFetchStarted) return;
+        modelFetchStarted = true;
+        fetch('statex-automation-model.glb')
+          .then((res) => {
+            if (!res.ok) throw new Error('Model fetch failed');
+            return res.blob();
+          })
+          .then((blob) => {
+            modelBlobUrl = URL.createObjectURL(blob);
+            if (isOpened && !unipackModel.getAttribute('src')) {
+              unipackModel.setAttribute('src', modelBlobUrl);
+            }
+          })
+          .catch(() => {
+            if (isOpened && !unipackModel.getAttribute('src')) {
+              unipackModel.setAttribute('src', 'statex-automation-model.glb');
+            }
+          });
       }
 
-      const productShowcaseCard = document.getElementById('productShowcaseCard');
-      if (productShowcaseCard) {
-        productShowcaseCard.addEventListener('click', (e) => {
-          // Open modal when any part of the card (image, title, container) is clicked
-          open360Modal();
-        });
+      window.addEventListener('load', () => {
+        setTimeout(startBackgroundModelFetch, 350);
+      });
+
+      function openDoors() {
+        if (isOpened) return;
+        isOpened = true;
+        frame.classList.add('is-open');
+        scenesContainer.classList.add('revealed');
+        if (modelBlobUrl && !unipackModel.getAttribute('src')) {
+          unipackModel.setAttribute('src', modelBlobUrl);
+        } else if (!modelFetchStarted) {
+          startBackgroundModelFetch();
+        }
       }
 
-      open360Btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        open360Modal();
-      });
-      close360Btn.addEventListener('click', close360Modal);
+      openSealBtn.addEventListener('click', openDoors);
+      leftDoor.addEventListener('click', openDoors);
+      rightDoor.addEventListener('click', openDoors);
 
-      modal360.addEventListener('click', (e) => {
-        if (e.target === modal360) close360Modal();
-      });
+      function goToScene(index) {
+        if (index < 0 || index >= scenes.length) return;
+        current = index;
 
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && is3DOpen) close360Modal();
-      });
+        // Keep the 3D model static in place across Page 1 and Page 2; hide on Page 3
+        if (sharedModelCard) {
+          const showModel = current === 0 || current === 1;
+          sharedModelCard.style.opacity = showModel ? '1' : '0';
+          sharedModelCard.style.pointerEvents = showModel ? 'auto' : 'none';
+        }
 
-      presetBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          applyPreset(btn.dataset.preset);
+        scenes.forEach((s, i) => {
+          s.classList.toggle('active', i === current);
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === scenes.length - 1;
+        nextBtn.textContent = current === scenes.length - 1 ? 'Done' : 'Next →';
+      }
+
+      prevBtn.addEventListener('click', () => goToScene(current - 1));
+      nextBtn.addEventListener('click', () => goToScene(current + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          goToScene(Number(dot.dataset.goto));
         });
       });
 
-      toggleAutoRotateBtn.addEventListener('click', () => {
-        autoRotateActive = !autoRotateActive;
-        updateAutoRotateUI();
-      });
-
-      resetViewBtn.addEventListener('click', () => {
-        autoRotateActive = true;
-        updateAutoRotateUI();
-        applyPreset('overview');
-        if (modelViewer) modelViewer.resetTurntableRotation();
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          goToScene(current + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          goToScene(current - 1);
+        }
       });
     })();
   </script>
