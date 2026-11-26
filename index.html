@@ -128,6 +128,15 @@
       perspective: 1400px;
       transform-style: preserve-3d;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+      transition: background 0.5s ease;
+    }
+
+    .card-frame.is-emerald {
+      background: linear-gradient(180deg, #0e3b22 0%, #0d351e 65%, #0b2c19 100%);
+    }
+
+    .card-frame.is-emerald .bottom-wave {
+      opacity: 0;
     }
 
     @media (min-width: 640px) {
@@ -773,6 +782,8 @@
           sharedModelCard.style.opacity = showModel ? '1' : '0';
           sharedModelCard.style.pointerEvents = showModel ? 'auto' : 'none';
         }
+
+        frame.classList.toggle('is-emerald', current === 1);
 
         scenes.forEach((s, i) => {
           s.classList.toggle('active', i === current);
